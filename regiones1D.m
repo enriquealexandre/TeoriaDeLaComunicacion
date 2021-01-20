@@ -14,7 +14,10 @@ mu = [-1 1];
 x = -4:0.01:4;
 sigma = ones(size(p));
 
+%Genero la fdp normal
 y = normpdf(repmat(x,length(p),1)', mu, sigma)*diag(p);
+
+%Dibujo los resultados
 plot(x,y);
 
 
