@@ -28,7 +28,7 @@ mu = repelem(mu,length(rejilla)*length(rejilla),1);
 %Genero una fdp normal para cada símbolo
 normal = mvnpdf(coordenadas, mu,sigma);
 
-%Hora de pintar
+%Dibujo todas las gráficas
 figure
 hold on
 for i=1:M
