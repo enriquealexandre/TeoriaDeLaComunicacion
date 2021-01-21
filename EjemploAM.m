@@ -19,40 +19,23 @@ T = 0.2;    %Duración de las señales (s)
 df = 0.3;   %Resolución mínima que quiero tener en frecuencia (Hz)
 
 %Genero la señal moduladora. 
-t = [0:Ts:T];
-m = cos(2*pi*25.*t);
-m = m/max(abs(m));  %Sé que lo está, pero me aseguro de que esté normalizada porque es AM
+t = 0:Ts:T;
+x = cos(2*pi*25.*t);
 
-%Ahora genero la portadora. Un coseno de frecuencia fc de la misma duración
-%que la señal moduladora
-xc = cos(2*pi*fc.*t);
-
-%Por último, la señal AM:
-xAM = (1+mu*m).*xc;
+%Modulo en AM
+[xAM, xc] = moduladorAM(x, 1, fc, mu, fs);
 
 %Como es AM, tengo dos opciones de detector: envolvente o síncrono
-%Empiezo con un síncrono, igual que el visto en clase
-%Genero antes de nada un filtro paso bajo
-Lfiltro = 25;   %Longitud del filtro
-fpb = 2*fx;       %Frecuencia de corte del filtro paso bajo
-Rp  = 0.00057565; % Rizado permitido (0.01 dB)
-Rst = 1e-4;       % Atenuación de la banda de corte (80 dB)
-eqnum = firceqrip(Lfiltro,fpb/(fs/2),[Rp Rst],'passedge'); 
+%Primero pruebo con un síncrono:
+xr_sinc = detectorSincrono(xAM, 2/mu, fc, 0, 2*fx, fs);
 
-%Ahora multiplico por el oscilador local, y filtro la señal
-%a la salida del oscilador local con el filtro paso bajo
-xr_sinc = filter(eqnum,1,2*xAM.*xc);
-%Le quito la componente continua
-xr_sinc = (xr_sinc-mean(xr_sinc))/mu;
-
-%Pruebo también con un detector de envolvente:
-A=abs(hilbert(xAM));    %Esta es la envolvente de la señal
-xr_env = (A - mean(A))/mu;
+%Ahora un detector de envolvente:
+xr_env = detectorEnvolvente(xAM);
 
 %Pinto las cuatro señales en el tiempo, para ver su aspecto
 figure
 subplot(5,1,1)
-plot(t,m)
+plot(t,x)
 xlabel('Tiempo (s)');
 title('Señal moduladora (mensaje)')
 subplot(5,1,2);
@@ -77,7 +60,7 @@ N = 2^nextpow2(fs/df);          %Número de muestras de la FFT
 f = -fs/2:fs/N:(fs/2)-fs/N;     %Genero el eje de frecuencias
 
 %Calculo todas las FFTs
-M = fft(m,N)/(fs*T/(2*pi));
+M = fft(x,N)/(fs*T/(2*pi));
 XC = fft(xc,N)/(fs*T/(2*pi));
 XAM = fft(xAM,N)/(fs*T/(2*pi));
 XR_sinc = fft(xr_sinc,N)/(fs*T/(2*pi));

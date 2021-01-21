@@ -7,41 +7,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Defino algunos parámetros generales
-fs = 2000;  %Frecuencia de muestreo (Hz)
-Ts = 1/fs;  %Periodo de muestreo (el inverso de fs)
-fc = 250;   %Frecuencia de la portadora (Hz)
-fx = 25;    %Frecuencia de la moduladora (Hz)
-            %¡Ojo! Debe ser mucho menor a fc
-T = 0.2;    %Duración de las señales (s)
-df = 0.3;   %Resolución mínima que quiero tener en frecuencia (Hz)
+fs = 2000;      %Frecuencia de muestreo (Hz)
+Ts = 1/fs;      %Periodo de muestreo (el inverso de fs)
+fc = 250;       %Frecuencia de la portadora (Hz)
+fx = 25;        %Frecuencia de la moduladora (Hz)
+                %¡Ojo! Debe ser mucho menor a fc
+T = 0.2;        %Duración de las señales (s)
+df = 0.3;       %Resolución mínima que quiero tener en frecuencia (Hz)
+deltaF = 0;     %Error en la frecuencia del OL
+deltaPHI = 0;   %Error en la fase del OL
 
 %Genero la señal moduladora. 
-t = [0:Ts:T];
-m = cos(2*pi*25.*t);
-
-%Ahora genero la portadora. Un coseno de frecuencia fc de la misma duración
-%que la señal moduladora
-xc = cos(2*pi*fc.*t);
+t = 0:Ts:T;
+x = cos(2*pi*25.*t);
 
 %Por último, la señal DBL:
-xDBL = m.*xc;
+[xDBL, xc] = moduladorDBL(x, 1, fc, fs);
 
-%Utilizo un detector síncrono como el visto en clase 
-%Genero antes de nada un filtro paso bajo
-Lfiltro = 25;   %Longitud del filtro
-fpb = 50;       %Frecuencia de corte del filtro paso bajo
-Rp  = 0.00057565; % Rizado permitido (0.01 dB)
-Rst = 1e-4;       % Atenuación de la banda de corte (80 dB)
-eqnum = firceqrip(Lfiltro,fpb/(fs/2),[Rp Rst],'passedge'); 
-
-%Ahora multiplico por el oscilador local, y filtro la señal
-%a la salida del oscilador local con el filtro paso bajo
-xr = filter(eqnum,1,2*xDBL.*xc);
+%Detecto la señal con un detector síncrono
+xr = detectorSincrono(xDBL, 2, fc+deltaF, deltaPHI, 2*fx, fs);
 
 %Pinto las cuatro señales en el tiempo, para ver su aspecto
 figure
 subplot(4,1,1)
-plot(t,m)
+plot(t,x)
 xlabel('Tiempo (s)');
 title('Señal moduladora (mensaje)')
 subplot(4,1,2);
@@ -62,7 +51,7 @@ N = 2^nextpow2(fs/df);          %Número de muestras de la FFT
 f = -fs/2:fs/N:(fs/2)-fs/N;     %Genero el eje de frecuencias
 
 %Calculo todas las FFTs
-M = fft(m,N)/(fs*T/(2*pi));
+M = fft(x,N)/(fs*T/(2*pi));
 XC = fft(xc,N)/(fs*T/(2*pi));
 XDBL = fft(xDBL,N)/(fs*T/(2*pi));
 XR = fft(xr,N)/(fs*T/(2*pi));
