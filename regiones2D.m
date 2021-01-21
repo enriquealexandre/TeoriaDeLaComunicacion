@@ -3,7 +3,7 @@
 %
 % Se visualizan las fdps condicionadas de cada símbolo para los casos de
 % símbolos equiprobables y de símbolos no equiprobables. 
-% Podéis modificar las coordenadas y el número de los símbolos, las
+% Se pueden modificar las coordenadas y el número de los símbolos, las
 % probabilidades a priori de los símbolos, o la potencia del ruido
 %
 % El punto de vista de las gráficas está fijado a un azimut de 90º porque
