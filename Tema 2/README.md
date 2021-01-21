@@ -1,3 +1,3 @@
-# Teoria De La Comunicacion
+# Tema 2 - Modulaciones analógicas
 
-Varios scripts de Matlab con ejemplos para la asignatura de Teoría de la Comunicación.
+Aquí hay algunos ejemplos relacionados con las modulaciones analógicas vistas en clase
