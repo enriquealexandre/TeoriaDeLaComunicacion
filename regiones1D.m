@@ -2,6 +2,7 @@
 % Demostración de las regiones de decisión en un caso con N=1
 % Se visualizan las fdps condicionadas de cada símbolo para los casos de
 % símbolos no equiprobables. 
+%
 % Se pueden modificar las probabilidades a priori de los símbolos
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
