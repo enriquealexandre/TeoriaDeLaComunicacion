@@ -1,2 +1,3 @@
-# TeoriaDeLaComunicacion
-Código de ejemplos para la asignatura Teoría de la Comunicación
+# Teoria De La Comunicacion
+
+Varios scripts de Matlab con ejemplos para la asignatura de Teoría de la Comunicación.
