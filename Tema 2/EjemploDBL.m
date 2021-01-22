@@ -12,7 +12,7 @@ Ts = 1/fs;      %Periodo de muestreo (el inverso de fs)
 fc = 250;       %Frecuencia de la portadora (Hz)
 fx = 25;        %Frecuencia de la moduladora (Hz)
                 %¡Ojo! Debe ser mucho menor a fc
-T = 0.2;        %Duración de las señales (s)
+T = 1;          %Duración de las señales (s)
 df = 0.3;       %Resolución mínima que quiero tener en frecuencia (Hz)
 deltaF = 0;     %Error en la frecuencia del OL
 deltaPHI = 0;   %Error en la fase del OL
@@ -20,19 +20,20 @@ Ac = 1;         %Amplitud de la portadora
 
 %Genero la señal moduladora. 
 t = 0:Ts:T;
-x = cos(2*pi*25.*t);
-
+x = cos(2*pi*fx.*t);
 %Potencia de la señal moduladora
-Sx = (norm(x)^2)/length(x);
+Sx = meansqr(x);
 
-%Por último, la señal DBL:
-[xDBL, xc] = moduladorDBL(x, Ac, fc, fs);
+%Genero la portadora
+x_c = Ac*cos(2*pi*fc.*t);
 
+%Ahora genero la señal modulada en DBL:
+x_DBL = moduladorDBL(x, x_c);
 %Calculo la potencia de la señal modulada
-Pm = (norm(xDBL)^2)/length(xDBL);
+Pm = meansqr(x_DBL);
 
 %Detecto la señal con un detector síncrono
-xr = detectorSincrono(xDBL, 2/Ac, fc+deltaF, deltaPHI, 2*fx, fs);
+x_r = detectorSincrono(x_DBL, 2/Ac, fc, deltaF, deltaPHI, fx, fs);
 
 %Pinto las cuatro señales en el tiempo, para ver su aspecto
 figure
@@ -41,15 +42,15 @@ plot(t,x)
 xlabel('Tiempo (s)');
 title(['Señal moduladora (mensaje), Sx=' num2str(Sx,3) 'W'])
 subplot(4,1,2);
-plot(t, xc);
+plot(t, x_c);
 xlabel('Tiempo (s)');
 title('Portadora')
 subplot(4,1,3);
-plot(t, xDBL);
+plot(t, x_DBL);
 xlabel('Tiempo (s)');
 title(['Señal modulada (DBL), Pm=' num2str(Pm,3) 'W'])
 subplot(4,1,4);
-plot(t, xr);
+plot(t, x_r);
 xlabel('Tiempo (s)');
 title('Señal detectada')
 
@@ -59,9 +60,9 @@ f = -fs/2:fs/N:(fs/2)-fs/N;     %Genero el eje de frecuencias
 
 %Calculo todas las FFTs
 M = fft(x,N)/(fs*T/(2*pi));
-XC = fft(xc,N)/(fs*T/(2*pi));
-XDBL = fft(xDBL,N)/(fs*T/(2*pi));
-XR = fft(xr,N)/(fs*T/(2*pi));
+X_C = fft(x_c,N)/(fs*T/(2*pi));
+X_DBL = fft(x_DBL,N)/(fs*T/(2*pi));
+X_R = fft(x_r,N)/(fs*T/(2*pi));
 
 %Y las represento...
 figure
@@ -70,15 +71,15 @@ plot(f,abs(fftshift(M)))
 xlabel('Frequencia (Hz)')
 title(['Espectro de la señal moduladora, Sx=' num2str(Sx,3) 'W'])
 subplot(4,1,2)
-plot(f,abs(fftshift(XC)))
+plot(f,abs(fftshift(X_C)))
 title('Espectro de la portadora')
 xlabel('Frequencia (Hz)') 
 subplot(4,1,3)
-plot(f,abs(fftshift(XDBL)))
+plot(f,abs(fftshift(X_DBL)))
 title(['Espectro de la señal modulada, Pm=' num2str(Pm,3) 'W'])
 xlabel('Frequencia (Hz)') 
 subplot(4,1,4)
-plot(f,abs(fftshift(XR)))
+plot(f,abs(fftshift(X_R)))
 title('Espectro de la señal reconstruida')
 xlabel('Frequencia (Hz)') 
 
