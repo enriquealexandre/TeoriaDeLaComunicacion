@@ -21,7 +21,7 @@ t = 0:Ts:(Ts*length(x))-Ts; % Genero el vector de tiempos;
 xOL = AOL*cos(2*pi*fOL.*t + phiOL);
 
 %Defino el filtro paso bajo
-Lfiltro = 25;   %Longitud del filtro
+Lfiltro = 30;   %Longitud del filtro
 Rp  = 0.00057565; % Rizado permitido (0.01 dB)
 Rst = 1e-4;       % Atenuación de la banda de corte (80 dB)
 eqnum = firceqrip(Lfiltro,fPB/(fs/2),[Rp Rst],'passedge'); 

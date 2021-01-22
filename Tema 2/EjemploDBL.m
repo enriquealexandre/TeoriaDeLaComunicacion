@@ -22,8 +22,14 @@ Ac = 1;         %Amplitud de la portadora
 t = 0:Ts:T;
 x = cos(2*pi*25.*t);
 
+%Potencia de la señal moduladora
+Sx = (norm(x)^2)/length(x);
+
 %Por último, la señal DBL:
 [xDBL, xc] = moduladorDBL(x, Ac, fc, fs);
+
+%Calculo la potencia de la señal modulada
+Pm = (norm(xDBL)^2)/length(xDBL);
 
 %Detecto la señal con un detector síncrono
 xr = detectorSincrono(xDBL, 2/Ac, fc+deltaF, deltaPHI, 2*fx, fs);
@@ -33,7 +39,7 @@ figure
 subplot(4,1,1)
 plot(t,x)
 xlabel('Tiempo (s)');
-title('Señal moduladora (mensaje)')
+title(['Señal moduladora (mensaje), Sx=' num2str(Sx,3) 'W'])
 subplot(4,1,2);
 plot(t, xc);
 xlabel('Tiempo (s)');
@@ -41,7 +47,7 @@ title('Portadora')
 subplot(4,1,3);
 plot(t, xDBL);
 xlabel('Tiempo (s)');
-title('Señal modulada (DBL)')
+title(['Señal modulada (DBL), Pm=' num2str(Pm,3) 'W'])
 subplot(4,1,4);
 plot(t, xr);
 xlabel('Tiempo (s)');
@@ -62,14 +68,14 @@ figure
 subplot(4,1,1)
 plot(f,abs(fftshift(M)))
 xlabel('Frequencia (Hz)')
-title('Espectro de la señal moduladora')
+title(['Espectro de la señal moduladora, Sx=' num2str(Sx,3) 'W'])
 subplot(4,1,2)
 plot(f,abs(fftshift(XC)))
 title('Espectro de la portadora')
 xlabel('Frequencia (Hz)') 
 subplot(4,1,3)
 plot(f,abs(fftshift(XDBL)))
-title('Espectro de la señal modulada (DBL)')
+title(['Espectro de la señal modulada, Pm=' num2str(Pm,3) 'W'])
 xlabel('Frequencia (Hz)') 
 subplot(4,1,4)
 plot(f,abs(fftshift(XR)))

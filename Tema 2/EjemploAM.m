@@ -17,15 +17,18 @@ fx = 25;    %Frecuencia de la moduladora (Hz)
             %¡Ojo! Debe ser mucho menor a fc
 T = 0.2;    %Duración de las señales (s)
 df = 0.3;   %Resolución mínima que quiero tener en frecuencia (Hz)
-Ac = 2;     %Amplitud de la portadora
+Ac = 1;     %Amplitud de la portadora
 
 %Genero la señal moduladora. 
 t = -T/2:Ts:T/2;
 x = cos(2*pi*25.*t);
 
+%Potencia de la señal moduladora
+Sx = (norm(x)^2)/length(x);
+
 %Modulo en AM
 [xAM, xc] = moduladorAM(x, Ac, fc, mu, fs);
-
+Pm = (norm(xAM)^2)/length(xAM);
 
 %Como es AM, tengo dos opciones de detector: envolvente o síncrono
 %Primero pruebo con un síncrono:
