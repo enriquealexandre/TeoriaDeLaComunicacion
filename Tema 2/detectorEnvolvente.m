@@ -1,14 +1,26 @@
-function xr = detectorEnvolvente(x)
+function y = detectorEnvolvente(x, G, fc, Wx, fs)
+%function y = detectorEnvolvente(x, G, fc, Wx, fs)
 %
 %
 % Implementa un detector de envolvente. Incluye supresor de continua. 
-% Entrada:
+% Entradas:
 %   - x: Señal de entrada al detector
+%   - G: Ganancia del detector
+%   - fc: Frecuencia de la portadora (Hz)
+%   - Wx: Ancho de banda del mensaje (Hz)
+%   - fs: Frecuencia de muestreo (Hz)
 % Salida:
-%   - xr: Señal detectada
+%   - y: Señal detectada
 
-%Calculo la envolvente
-A = abs(hilbert(x));   
+%Comienzo filtrando paso banda la señal recibida
+x_bp = bandpass(x, [fc-Wx, fc+Wx], fs, 'Steepness', 0.95);
+
+%Calculo la envolvente de la señal
+envolvente = abs(hilbert(x_bp));
+
+%Filtro paso bajoo
+x_lp = lowpass(envolvente, Wx, fs, 'Steepness', 0.95);
+
 %Y le quito la continua
-xr = (A - mean(A));
+y = G*(x_lp - mean(x_lp));
 

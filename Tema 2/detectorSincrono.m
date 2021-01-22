@@ -1,35 +1,35 @@
-function xr = detectorSincrono(x, AOL, fOL, phiOL, fPB, fs)
-%function xr = detectorSincrono(x, AOL, fOL, phiOL, fPB, fs)
+function y = detectorSincrono(x, AOL, fc, deltaF, deltaPhi, Wx, fs)
+%function y = detectorSincrono(x, AOL, fc, deltaF, deltaPhi, Wx, fs)
 %
 % Implementa un detector síncrono, con filtro paso bajo y supresor de continua.
 % Entradas:
 %   - x: Señal de entrada al detector
 %   - AOL: Amplitud del oscilador local (V)
-%   - fOL: Frecuencia del oscilador local (Hz)
+%   - fc: Frecuencia de la portadora (Hz)
+%   - deltaF: Error en la frecuencia del O.L. (Hz)
+%   - deltaPhi: Error en la fase del O.L. (rad/s)
 %   - phiOL: Fase del oscilador local (rad/s)
-%   - fPB: Frecuencia de corte del filtro paso bajo (Hz)
+%   - Wx: Ancho de banda del mensaje (Hz)
 %   - fs: Frecuencia de muestreo para trabajar (Hz)
 % Salida: 
 %   - xr: Señal detectada
 
-
-
+%Antes de nada genero el vector de tiempos para poder trabajar
 Ts = 1/fs;
 t = 0:Ts:(Ts*length(x))-Ts; % Genero el vector de tiempos;
 
 %Genero la señal del oscilador local:
-xOL = AOL*cos(2*pi*fOL.*t + phiOL);
+OL = AOL*cos(2*pi*(fc+deltaF).*t + deltaPhi);
 
-%Defino el filtro paso bajo
-Lfiltro = 30;   %Longitud del filtro
-Rp  = 0.00057565; % Rizado permitido (0.01 dB)
-Rst = 1e-4;       % Atenuación de la banda de corte (80 dB)
-eqnum = firceqrip(Lfiltro,fPB/(fs/2),[Rp Rst],'passedge'); 
+%En primer lugar paso la señal recibida por un filtro paso banda
+x_bp = bandpass(x, [fc-Wx fc+Wx], fs, 'Steepness', 0.95);
 
-%Ahora  en primer lugar multiplico por el oscilador local
-xrOL = x.*xOL;
+%Ahora multiplico por el oscilador local
+x_OL = x_bp.*OL;
+
 %Filtro paso bajo
-xr = filter(eqnum,1,xrOL);
-%Y elimino la continua
-xr = xr - mean(xr);
+x_lp = lowpass(x_OL, Wx, fs, 'Steepness', 0.95);
+
+%Y por último elimino la continua
+y = x_lp - mean(x_lp);
 
