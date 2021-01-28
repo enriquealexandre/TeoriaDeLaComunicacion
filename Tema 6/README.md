@@ -6,9 +6,8 @@ EJEMPLOS EN CÓDIGO MATLAB
 *************************
 
 ShannonHartley.m
-    Se representa en una gráfica la relación entre la relación señal a ruido
-    y la eficiencia espectral para distintas modulaciones digitales. También
-    se muestra el límite teórico de Shannon-Hartley.
+
+    Se representa en una gráfica la relación entre la relación señal a ruido y la eficiencia espectral para distintas modulaciones digitales. También se muestra el límite teórico de Shannon-Hartley.
 
 
     
