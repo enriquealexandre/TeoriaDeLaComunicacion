@@ -6,7 +6,7 @@ Aquí hay algunos ejemplos relacionados con las modulaciones analógicas vistas 
 EJEMPLOS EN CÓDIGO MATLAB
 *************************
 
-**detectorEnvolvente.m**
+detectorEnvolvente.m
 
     Función que implementa un detector de envolvente.
     Incluye filtro pasobanda de sintonía, filtro paso bajo y supresión de continua.
