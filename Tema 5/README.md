@@ -8,6 +8,7 @@ EJEMPLOS EN SIMULINK
 Todos estos ejemplos han sido probados utilizando la versión R2020b de Matlab. 
 
 [Simulink_Audio.slx](Simulink_Audio.slx)
+
 [Simulink_Texto.slx](Simulink_Texto.slx)
 
     Ambos ficheros son básicamente lo mismo salvo por la señal que se utiliza de prueba, que en un caso es un archivo de audio y en otro un archivo de texto. Lo que se puede ver es el efecto "real" que tiene el ruido en un sistema de comunicaciones digital. Se puede modificar la cantidad de ruido y ver cómo va variando la señal recibida. 
