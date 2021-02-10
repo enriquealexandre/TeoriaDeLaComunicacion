@@ -68,19 +68,19 @@ X_R = fft(x_r,N)/(fs*T/(2*pi));
 figure
 subplot(4,1,1)
 plot(f,abs(fftshift(M)))
-xlabel('Frequencia (Hz)')
+xlabel('Frecuencia (Hz)')
 title(['Espectro de la señal moduladora, Sx=' num2str(Sx,3) 'W'])
 subplot(4,1,2)
 plot(f,abs(fftshift(X_C)))
 title('Espectro de la portadora')
-xlabel('Frequencia (Hz)') 
+xlabel('Frecuencia (Hz)') 
 subplot(4,1,3)
 plot(f,abs(fftshift(X_DBL)))
 title(['Espectro de la señal modulada, Pm=' num2str(Pm,3) 'W'])
-xlabel('Frequencia (Hz)') 
+xlabel('Frecuencia (Hz)') 
 subplot(4,1,4)
 plot(f,abs(fftshift(X_R)))
 title('Espectro de la señal reconstruida')
-xlabel('Frequencia (Hz)') 
+xlabel('Frecuencia (Hz)') 
 
 
