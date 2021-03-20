@@ -1,0 +1,206 @@
+\documentclass[idioma,boletin]{uah}
+
+\tema{6}
+\titulo{Transmisión digital paso banda}{Bandpass digital transmission}
+%
+\begin{document}
+
+\titulacion{Grados TIC}
+\asignatura{Teoría de la Comunicación}{Communication Theory}
+\departamento{Teoría de la Señal y Comunicaciones}
+\curso{2020/2021} % Do not show year
+
+\maketitle
+
+
+\Problema {
+
+	Calcule el valor esperado del número de errores de bit cometidos en un día por el receptor BPSK coherente especificado más abajo, cuando opera continuamente. 
+	
+	La velocidad de datos es de $5000 bits/s$. Las señales digitales de entrada son $s_1(t) = A\cdot cos(\omega_p t)$ y $s_2(t)=-A \cdot cos(\omega_p t)$, donde $A = 1 mV$ y la densidad espectral unilateral de potencia de ruido es $N_0 = 10^{-11} W/Hz$. 
+
+}
+{
+
+$2338$ bits
+}		
+{
+
+Calculate the expected value of the number of error bits during a day for the coherent BPSK receiver described below, under continuous operation. The data rate is $5000 bits/s$. The input digital signals are $s_1(t) = A\cdot cos(\omega_p t)$ and $s_2(t)=-A \cdot cos(\omega_p t)$, where $A = 1 mV$, and the unilateral noise power spectral density is $N_0 = 10^{-11} W/Hz$. 
+
+}
+{
+
+$2338$ bits
+}		
+
+
+
+
+
+\Problema {
+
+Un sistema BPSK coherente que opera continuamente comete errores a razón de $100$ errores al día como promedio. La velocidad de los datos es de $1000 bits/s$. La densidad espectral unilateral de potencia de ruido es $N_0 = 10^{-10} W/Hz$.
+
+\begin{enumerate}
+	\item Si el sistema es ergódico, ¿cual es la probabilidad media de error?
+	\item Si el valor de la potencia media recibida se ajusta a $10^{-6} W$, ¿será suficiente esta potencia para mantener la probabilidad de error calculada en el apartado a)?
+\end{enumerate} 
+
+}
+{
+
+\begin{enumerate}
+	\item $1.16 \cdot 10^{-6}$
+	\item No
+\end{enumerate}
+}
+{
+
+
+A coherent BPSK system operating continuously produces errors at an average rate of $100$ errors per day. The data rate is $1000 bits/s$. The unilateral noise power spectral density is $N_0 = 10^{-10} W/Hz$. 
+
+a)	
+b)	
+
+Un sistema BPSK coherente que opera continuamente comete errores a razón de $100$ errores al día como promedio. La velocidad de los datos es de $1000 bits/s$. La densidad espectral unilateral de potencia de ruido es $N_0 = 10^{-10} W/Hz$.
+
+\begin{enumerate}
+	\item If the system is ergodic, which is the average error probability?
+	\item If the average received power is adjusted to $10^{-6}$ W, would this value be enough to keep the error probability calculated in a)?
+\end{enumerate} 
+
+}
+{
+
+\begin{enumerate}
+	\item $1.16 \cdot 10^{-6}$
+	\item No
+\end{enumerate}
+}
+
+
+
+
+\Problema {
+
+La componente de señal de un sistema PSK coherente está definida por la expresión
+
+\begin{displaymath}
+	s(t) =A_c k sen(\omega_p t) \pm A_c \sqrt{1-k^2} cos(\omega_p t)
+\end{displaymath}
+
+
+donde $0 \leq t < T_b$, y el signo más corresponde al símbolo $1$ y el signo menos corresponde al símbolo $0$. El primer término del segundo miembro de la igualdad representa una componente de portadora, incluida para facilitar la sincronización entre el receptor y el transmisor. Se pide:
+
+\begin{enumerate}
+	\item Dibujar la constelación de las señales descritas. ¿Qué observaciones pueden hacerse acerca de este diagrama?
+	\item Mostrar que en presencia de ruido gaussiano aditivo de media nula y densidad espectral de potencia $N_0/2$, la probabilidad media de error es:
+	\begin{displaymath}
+		P_e = Q \left ( \sqrt{\frac{2E_b}{N_0} (1-k^2)} \right )
+	\end{displaymath}
+	con $E_b = \frac{1}{2} A_c^2 T_b$
+	\item Suponga que el $10\%$ de la potencia transmitida está ubicada en la componente de portadora. Determinar el valor de $E_b/N_0$ necesario para obtener una probabilidad de error de $10^{-4}$.
+	\item Compare este valor de $E_b/N_0$ con el requerido en un sistema PSK convencional con la misma probabilidad de error.
+\end{enumerate}
+
+}
+{
+\begin{enumerate}
+	\item Constelación de una PSK
+	\item Demostración
+	\item $\frac{E_b}{N_0} = 8.02$
+	\item $\frac{E_b}{N_0} = 7.22$
+\end{enumerate}
+
+}
+{
+
+
+	The signal component of a coherent PSK system is defined by the expression
+
+\begin{displaymath}
+	s(t) =A_c k sen(\omega_p t) \pm A_c \sqrt{1-k^2} cos(\omega_p t)
+\end{displaymath}
+
+where $0 \leq t < T_b$, and the plus sign corresponds to the $1$ symbol, and the minus sign corresponds to the $0$ one. The first term on the right hand side of the equation represents a carrier component, included to improve the synchronization between transmitter and receiver. Solve this:
+
+\begin{enumerate}
+	\item Plot the constellation of the signals described; what can be said about this diagram?
+	\item Show that, in presence of zero-mean additive white Gaussian noise with power spectral density $N_0/2$, the average error probability is
+	\begin{displaymath}
+		P_e = Q \left ( \sqrt{\frac{2E_b}{N_0} (1-k^2)} \right )
+	\end{displaymath}
+	with $E_b = \frac{1}{2} A_c^2 T_b$
+	\item Assume that $10\%$ of the transmitted power is located in the carrier component. Determine the value of $E_b/N_0$ required to obtain an error probability of $10^{-4}$.
+	\item Compare this $E_b/N_0$ value with the one required in a conventional PSK system with the same error probability.
+\end{enumerate}
+
+}
+{
+\begin{enumerate}
+	\item PSK constellation
+	\item Demonstration
+	\item $\frac{E_b}{N_0} = 8.02$
+	\item $\frac{E_b}{N_0} = 7.22$
+\end{enumerate}
+
+}
+
+
+
+
+\Problema{
+
+Se desea comparar dos sistemas paso-banda de transmisión de datos. Uno de ellos utiliza 16-PSK y el otro 16-QAM. Ambos sistemas deben obtener una probabilidad media de error de símbolo igual a $10^{-3}$. Compare los requisitos de relación señal-ruido de estos dos sistemas.
+}
+{
+
+$\Delta \left ( \frac{E_s}{N_0} \right ) = 3.68 dB$
+}
+{
+
+We want to compare two data transmission bandpass systems. One of them employs 16-PSK, the other, 16-QAM. Both systems have to provide an average symbol error probability of $10^{-3}$. Compare the signal-to-noise requirements of said systems.
+}
+{
+
+$\Delta \left ( \frac{E_s}{N_0} \right ) = 3.68 dB$
+}
+
+
+
+\Problema {
+
+Si el criterio de rendimiento de un sistema es la probabilidad de error de bit, ¿Cuál de los dos esquemas de modulación siguientes será el elegido para operar en un canal AWGN? Muestre los cálculos.
+
+\begin{enumerate}
+	\item FSK binaria ortogonal coherente con $E_b/N_0 = 13 dB$.
+	\item PSK binaria coherente con $E_b/N_0 = 8 dB$.
+\end{enumerate}
+
+}
+{
+
+FSK binaria ortogonal coherente
+}
+{
+
+If the performance criterion of a system is the bit error probability, which one of the following modulation schemes would be chosen to operate in an AWGN channel? Show the calculations.
+
+\begin{enumerate}
+	\item Coherent binary orthogonal FSK with $E_b/N_0 = 13 dB$.
+	\item Coherent binary PSK with $E_b/N_0 = 8 dB$.
+\end{enumerate}
+
+}
+{
+
+Coherent binary orthogonal FSK
+}
+
+
+
+
+\end{document}
+
+
