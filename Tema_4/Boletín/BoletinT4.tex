@@ -355,7 +355,7 @@ Every T seconds, a transmitter sends across an AWGN channel one of the four foll
 \begin{displaymath}
 	\begin{array}{ll}
 		s_0(t) = A \cdot cos\left ( \frac{\pi t}{T} \right ) & 0\leq t<T \\
-		s_2(t) = A \cdot cos\left ( \frac{\pi t}{T} + \phi \right ) & 0\leq t<T \\
+		s_1(t) = A \cdot cos\left ( \frac{\pi t}{T} + \phi \right ) & 0\leq t<T \\
 	\end{array}
 \end{displaymath}
 
@@ -380,7 +380,7 @@ Donde $T$ es la duración del símbolo.
 	\item \begin{displaymath}
 		\begin{array}{l}
 			s_0(t) = A \sqrt{\frac{T}{2}} \cdot\phi_1(t) \\
-			s_1(t) = A \sqrt{\frac{T}{2}} \cdot \phi_1(t) + A \sqrt{\frac{T}{2}} \cdot sen(\phi) \cdot \phi_1(t)
+			s_1(t) = A \sqrt{\frac{T}{2}} \cdot cos(\phi) \cdot \phi_1(t) + A \sqrt{\frac{T}{2}} \cdot sen(\phi) \cdot \phi_2(t)
 		\end{array}
 		\end{displaymath}
 		Regiones de decisión: 
@@ -399,7 +399,7 @@ Donde $T$ es la duración del símbolo.
 \begin{displaymath}
 	\begin{array}{ll}
 		s_0(t) = A \cdot cos\left ( \frac{\pi t}{T} \right ) & 0\leq t<T \\
-		s_2(t) = A \cdot cos\left ( \frac{\pi t}{T} + \phi \right ) & 0\leq t<T \\
+		s_1(t) = A \cdot cos\left ( \frac{\pi t}{T} + \phi \right ) & 0\leq t<T \\
 	\end{array}
 \end{displaymath}
 
@@ -424,7 +424,7 @@ where $T$ is the symbol period.
 	\item \begin{displaymath}
 		\begin{array}{l}
 			s_0(t) = A \sqrt{\frac{T}{2}} \cdot\phi_1(t) \\
-			s_1(t) = A \sqrt{\frac{T}{2}} \cdot \phi_1(t) + A \sqrt{\frac{T}{2}} \cdot \sin(\phi) \cdot \phi_1(t)
+			s_1(t) = A \sqrt{\frac{T}{2}} \cdot cos(\phi) \cdot \phi_1(t) + A \sqrt{\frac{T}{2}} \cdot \sin(\phi) \cdot \phi_2(t)
 		\end{array}
 		\end{displaymath}
 		Decision regions: 
