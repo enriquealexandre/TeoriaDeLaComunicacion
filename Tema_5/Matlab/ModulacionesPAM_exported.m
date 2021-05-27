@@ -5,7 +5,11 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         UIFigure                        matlab.ui.Figure
         GridLayout                      matlab.ui.container.GridLayout
         LeftPanel                       matlab.ui.container.Panel
+        InstantemuestreoEditField       matlab.ui.control.NumericEditField
+        InstantemuestreoEditFieldLabel  matlab.ui.control.Label
         GrficasButtonGroup              matlab.ui.container.ButtonGroup
+        ConstelacinRxButton             matlab.ui.control.RadioButton
+        ConstelacinTxButton             matlab.ui.control.RadioButton
         PulsoTxRxButton                 matlab.ui.control.RadioButton
         DetectorButton                  matlab.ui.control.RadioButton
         SxwButton                       matlab.ui.control.RadioButton
@@ -47,6 +51,8 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         ydelay = zeros(1,1000);
         yISI = zeros(1,1000);
         yALL = zeros(1,1000);
+        hC = 0;
+        t0 = 0;
     end
 
 
@@ -90,9 +96,15 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         end
 
         function ActualizaDatos(app)
-            eval(['hC = ' app.hCEditField.Value ';']);
+            try 
+                eval(['hC = ' app.hCEditField.Value ';']);
+            catch ME
+                app.hCEditField.Value = '[1 0.2]';
+                hC = [1 0.2];
+            end
+            app.hC = hC;
             sigma = app.sigmaEditField.Value;
-            delay = app.RetardomuestrasEditField.Value;       
+            delay = app.RetardomuestrasEditField.Value;
             if length(hC)>1
                 hC = upsample(hC,app.Ts);
             end
@@ -122,20 +134,27 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
                 app.UIAxes.XTickLabelMode = 'auto';
                 grid(app.UIAxes,'on')
             elseif app.DetectorButton.Value
-                x = app.y(1+(app.L*app.Ts)/2:end+1-app.Ts-(app.L*app.Ts)/2);
+                x = app.y(1+(length(app.hC)*app.Ts)+(app.L*app.Ts)/2:end+1-app.Ts-(app.L*app.Ts)/2);
+                arx = x(1+app.t0:app.Ts:end);
                 plot(app.UIAxes,x)
                 hold(app.UIAxes,'on');
-                plot(app.UIAxes, 1:app.Ts:length(x),x(1:app.Ts:end),'ro');
+                plot(app.UIAxes, 1+app.t0:app.Ts:length(x),arx,'ro');
                 app.UIAxes.XLim = [1 length(x)];
                 app.UIAxes.YLim = [min(x)-0.2 max(x)+0.2];
                 app.UIAxes.XTickMode = 'auto';
                 app.UIAxes.XTickLabelMode = 'auto';
                 grid(app.UIAxes,'on')
                 hold(app.UIAxes,'off');
-                atx = app.a(1:app.Ts:length(app.a));
-                atx = atx(1:end-app.L);
-                arx = round(x(1:app.Ts:length(x)));
-                errores = length(find(atx-arx));
+                atx = app.a(1+length(app.hC)*app.Ts:app.Ts:length(app.a));
+                atx = atx(1:end-app.L-ceil(app.t0/app.Ts));
+                switch lower(app.CodificacionListBox.Value)
+                    case 'polar'
+                        errores = length(find(atx-sign(arx)));
+                    case 'unipolar'
+                        errores = length(find(atx-round(arx)));
+                    case 'bipolar'
+                        errores = length(find(atx-round(arx)));
+                end
                 app.ErrorescometidosEditField.Value = errores;
             elseif app.PulsoTxRxButton.Value
                 plot(app.UIAxes, app.hTR)
@@ -143,6 +162,44 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
                 app.UIAxes.YLim = [min(app.hTR)-0.2 max(app.hTR)+0.2];
                 app.UIAxes.XTickMode = 'auto';
                 app.UIAxes.XTickLabelMode = 'auto';
+            elseif app.ConstelacinTxButton.Value
+                atx = app.a(1:app.Ts:length(app.a));
+                atx = atx(1:end-app.L);
+                plot(app.UIAxes, atx, zeros(size(atx)),'ro','LineWidth', 3);
+                app.UIAxes.XLim = [min(atx)-0.2 max(atx)+0.2];
+                app.UIAxes.YLim = [-1 1];
+                app.UIAxes.XTickMode = 'auto';
+                app.UIAxes.XTickLabelMode = 'auto';
+            elseif app.ConstelacinRxButton.Value
+                x = app.y(1+(length(app.hC)*app.Ts)+(app.L*app.Ts)/2:end+1-app.Ts-(app.L*app.Ts)/2);
+                arx = x(1+app.t0:app.Ts:end);
+                atx = app.a(1+length(app.hC)*app.Ts:app.Ts:length(app.a));
+                atx = atx(1:end-app.L-ceil(app.t0/app.Ts));
+                switch lower(app.CodificacionListBox.Value)
+                    case 'polar'
+                        errores = length(find(atx-sign(arx)));
+                        unos = find(atx==1);
+                        ceros = find(atx==-1);
+                    case 'unipolar'
+                        errores = length(find(atx-round(arx)));
+                        unos = find(atx==1);
+                        ceros = find(atx==0);
+                    case 'bipolar'
+                        errores = length(find(atx-round(arx)));
+                        unos = find(sign(atx).*atx==1);
+                        ceros = find(atx==0);
+                end
+
+                plot(app.UIAxes, arx(unos), zeros(size(arx(unos))),'ro','LineWidth', 3);
+                hold(app.UIAxes,'on')
+                plot(app.UIAxes, arx(ceros), zeros(size(arx(ceros))),'go','LineWidth', 3);
+                app.UIAxes.XLim = [min(arx)-0.2 max(arx)+0.2];
+                app.UIAxes.YLim = [-1 1];
+                app.UIAxes.XTickMode = 'auto';
+                app.UIAxes.XTickLabelMode = 'auto';
+                hold(app.UIAxes,'off')
+
+                app.ErrorescometidosEditField.Value = errores;
             end
         end
     end
@@ -180,12 +237,20 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         % Value changed function: TipodepulsoListBox
         function TipodepulsoListBoxValueChanged(app, event)
             value = app.TipodepulsoListBox.Value;
-            if strcmp(value,'Coseno Alzado')
+            if contains(value,'Coseno Alzado')
                 app.alphaEditField.Enable=1;
                 app.alphaLabel.Enable=1;
+                app.CodificacionListBox.Enable = 1;
+            elseif contains(value,'Manchester')
+                app.alphaEditField.Enable=0;
+                app.alphaLabel.Enable = 0;
+                app.CodificacionListBox.Enable = 0;
+                app.CodificacionListBox.Value = 'Polar';
+                app.a = app.Simbolos;
             else
                 app.alphaEditField.Enable=0;
                 app.alphaLabel.Enable = 0;
+                app.CodificacionListBox.Enable = 1;
             end
             app.hTR = app.PulsoTX;
             app.ActualizaDatos;
@@ -195,6 +260,9 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         % Value changed function: alphaEditField
         function alphaEditFieldValueChanged(app, event)
             value = app.alphaEditField.Value;
+            if ~isnumeric(value)
+                value = 0;
+            end
             app.hTR = app.PulsoTX;
             app.ActualizaDatos;
             app.ActualizaGrafica;
@@ -211,13 +279,27 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         % Selection changed function: GrficasButtonGroup
         function GrficasButtonGroupSelectionChanged(app, event)
             selectedButton = app.GrficasButtonGroup.SelectedObject;
-            
+            selectedButton.Text
             if contains(selectedButton.Text,'Detector')
                 app.ErrorescometidosEditField.Visible = 1;
                 app.ErrorescometidosEditFieldLabel.Visible = 1;
+                app.InstantemuestreoEditField.Enable = 1;
+                app.InstantemuestreoEditFieldLabel.Enable = 1;
+            elseif contains(selectedButton.Text, 'Constelación Rx')
+                app.InstantemuestreoEditField.Enable = 1;
+                app.InstantemuestreoEditFieldLabel.Enable = 1;
+                app.ErrorescometidosEditField.Visible = 1;
+                app.ErrorescometidosEditFieldLabel.Visible = 1;
+            elseif contains(selectedButton.Text, 'Constelación Tx')
+                app.InstantemuestreoEditField.Enable = 1;
+                app.InstantemuestreoEditFieldLabel.Enable = 1;
+                app.ErrorescometidosEditField.Visible = 0;
+                app.ErrorescometidosEditFieldLabel.Visible = 0;
             else
                 app.ErrorescometidosEditField.Visible = 0;
                 app.ErrorescometidosEditFieldLabel.Visible = 0;
+                app.InstantemuestreoEditField.Enable = 0;
+                app.InstantemuestreoEditFieldLabel.Enable = 0;
             end
             app.ActualizaGrafica;
         end
@@ -225,6 +307,9 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         % Value changed function: sigmaEditField
         function sigmaEditFieldValueChanged(app, event)
             value = app.sigmaEditField.Value;
+            if ~isnumeric(value)
+                value = 0.05;
+            end
             app.ActualizaDatos;
             app.ActualizaGrafica;
         end
@@ -239,6 +324,14 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
         % Value changed function: RetardomuestrasEditField
         function RetardomuestrasEditFieldValueChanged(app, event)
             value = app.RetardomuestrasEditField.Value;
+            app.ActualizaDatos;
+            app.ActualizaGrafica;
+        end
+
+        % Value changed function: InstantemuestreoEditField
+        function InstantemuestreoEditFieldValueChanged(app, event)
+            value = app.InstantemuestreoEditField.Value;
+            app.t0 = value;
             app.ActualizaDatos;
             app.ActualizaGrafica;
         end
@@ -274,14 +367,14 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
             % Create TipodepulsoListBoxLabel
             app.TipodepulsoListBoxLabel = uilabel(app.LeftPanel);
             app.TipodepulsoListBoxLabel.HorizontalAlignment = 'right';
-            app.TipodepulsoListBoxLabel.Position = [15 382 79 22];
+            app.TipodepulsoListBoxLabel.Position = [12 339 79 22];
             app.TipodepulsoListBoxLabel.Text = 'Tipo de pulso';
 
             % Create TipodepulsoListBox
             app.TipodepulsoListBox = uilistbox(app.LeftPanel);
             app.TipodepulsoListBox.Items = {'NRZ', 'RZ', 'Coseno Alzado', 'Nyquist', 'Manchester'};
             app.TipodepulsoListBox.ValueChangedFcn = createCallbackFcn(app, @TipodepulsoListBoxValueChanged, true);
-            app.TipodepulsoListBox.Position = [110 310 100 96];
+            app.TipodepulsoListBox.Position = [107 267 100 96];
             app.TipodepulsoListBox.Value = 'NRZ';
 
             % Create alphaLabel
@@ -301,14 +394,14 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
             % Create CodificacionListBoxLabel
             app.CodificacionListBoxLabel = uilabel(app.LeftPanel);
             app.CodificacionListBoxLabel.HorizontalAlignment = 'right';
-            app.CodificacionListBoxLabel.Position = [16 260 73 22];
+            app.CodificacionListBoxLabel.Position = [13 227 73 22];
             app.CodificacionListBoxLabel.Text = 'Codificacion';
 
             % Create CodificacionListBox
             app.CodificacionListBox = uilistbox(app.LeftPanel);
             app.CodificacionListBox.Items = {'Polar', 'Unipolar', 'Bipolar'};
             app.CodificacionListBox.ValueChangedFcn = createCallbackFcn(app, @CodificacionListBoxValueChanged, true);
-            app.CodificacionListBox.Position = [110 224 100 60];
+            app.CodificacionListBox.Position = [107 191 100 60];
             app.CodificacionListBox.Value = 'Polar';
 
             % Create sigmaEditFieldLabel
@@ -352,28 +445,51 @@ classdef ModulacionesPAM_exported < matlab.apps.AppBase
             app.GrficasButtonGroup = uibuttongroup(app.LeftPanel);
             app.GrficasButtonGroup.SelectionChangedFcn = createCallbackFcn(app, @GrficasButtonGroupSelectionChanged, true);
             app.GrficasButtonGroup.Title = 'Gráficas';
-            app.GrficasButtonGroup.Position = [17 83 193 120];
+            app.GrficasButtonGroup.Position = [13 19 193 163];
 
             % Create DiagramadeojoButton
             app.DiagramadeojoButton = uiradiobutton(app.GrficasButtonGroup);
             app.DiagramadeojoButton.Text = 'Diagrama de ojo';
-            app.DiagramadeojoButton.Position = [14 53 110 22];
+            app.DiagramadeojoButton.Position = [14 96 110 22];
             app.DiagramadeojoButton.Value = true;
 
             % Create SxwButton
             app.SxwButton = uiradiobutton(app.GrficasButtonGroup);
             app.SxwButton.Text = 'Sx(w)';
-            app.SxwButton.Position = [14 32 51 22];
+            app.SxwButton.Position = [14 75 51 22];
 
             % Create DetectorButton
             app.DetectorButton = uiradiobutton(app.GrficasButtonGroup);
             app.DetectorButton.Text = 'Detector';
-            app.DetectorButton.Position = [14 11 68 22];
+            app.DetectorButton.Position = [14 54 68 22];
 
             % Create PulsoTxRxButton
             app.PulsoTxRxButton = uiradiobutton(app.GrficasButtonGroup);
             app.PulsoTxRxButton.Text = 'Pulso (Tx-Rx)';
-            app.PulsoTxRxButton.Position = [14 74 94 22];
+            app.PulsoTxRxButton.Position = [14 117 94 22];
+
+            % Create ConstelacinTxButton
+            app.ConstelacinTxButton = uiradiobutton(app.GrficasButtonGroup);
+            app.ConstelacinTxButton.Text = 'Constelación Tx';
+            app.ConstelacinTxButton.Position = [14 31 109 22];
+
+            % Create ConstelacinRxButton
+            app.ConstelacinRxButton = uiradiobutton(app.GrficasButtonGroup);
+            app.ConstelacinRxButton.Text = 'Constelación Rx';
+            app.ConstelacinRxButton.Position = [14 8 110 22];
+
+            % Create InstantemuestreoEditFieldLabel
+            app.InstantemuestreoEditFieldLabel = uilabel(app.LeftPanel);
+            app.InstantemuestreoEditFieldLabel.HorizontalAlignment = 'right';
+            app.InstantemuestreoEditFieldLabel.Enable = 'off';
+            app.InstantemuestreoEditFieldLabel.Position = [39 388 56 28];
+            app.InstantemuestreoEditFieldLabel.Text = {'Instante '; 'muestreo'};
+
+            % Create InstantemuestreoEditField
+            app.InstantemuestreoEditField = uieditfield(app.LeftPanel, 'numeric');
+            app.InstantemuestreoEditField.ValueChangedFcn = createCallbackFcn(app, @InstantemuestreoEditFieldValueChanged, true);
+            app.InstantemuestreoEditField.Enable = 'off';
+            app.InstantemuestreoEditField.Position = [110 391 100 22];
 
             % Create RightPanel
             app.RightPanel = uipanel(app.GridLayout);
