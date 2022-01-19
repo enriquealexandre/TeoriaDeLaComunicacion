@@ -2,3 +2,4 @@
 *.fig
 *.eps
 .DS_Store
+*.icloud
