@@ -1,0 +1,336 @@
+\documentclass[12pt,es,blanco]{uah}
+
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{multirow}
+
+
+\begin{document}
+
+
+\renewcommand{\arraystretch}{1}
+
+\begin{center}
+
+    {\bf RESUMEN DE ECUACIONES}
+    
+    \vspace{0.5cm}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % RELACIONES TRIGONOMÉTRICAS
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\arraystretch}{1.6}
+    \begin{tabular}{|c|}
+        \multicolumn{1}{c}{{\bf Relaciones trigonométricas}}\\
+        \hline 
+        $\cos (\alpha \pm \beta) = \cos (\alpha) \cdot \cos (\beta) \mp \sen (\alpha) \cdot \sen (\beta)$ \\
+        \hline 
+        $\sen (\alpha \pm \beta) = \sen (\alpha) \cdot \cos (\beta) \pm \cos(\alpha) \cdot \sen (\beta)$ \\
+        \hline 
+        $\sen (\alpha) \cdot \sen (\beta) = \frac{1}{2} \cdot \left [ \cos (\alpha - \beta ) - \cos (\alpha + \beta ) \right ]$ \\ 
+        \hline 
+        $\cos (\alpha) \cdot \cos (\beta) = \frac{1}{2} \cdot \left [ \cos (\alpha - \beta ) + \cos (\alpha + \beta ) \right ]$ \\
+        \hline 
+        $\sen (\alpha) \cdot \cos (\beta) = \frac{1}{2} \cdot \left [ \sen (\alpha - \beta ) + \sen (\alpha + \beta ) \right ]$ \\ 
+        \hline 
+        $\cos (2 \alpha) = \cos^2 (\alpha) - \sen^2 (\alpha)$ \\ 
+        \hline 
+        $\sen (2 \alpha) = 2 \cdot \sen (\alpha) \cdot \cos (\alpha)$ \\
+        \hline 
+        $\sen^2 (\alpha) = \frac{1}{2} \cdot \left ( 1 - \cos (2 \alpha) \right )$ \\
+        \hline 
+        $\cos^2 (\alpha) = \frac{1}{2} \cdot \left ( 1 + \cos (2 \alpha) \right )$ \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % TRANSFORMADA DE FOURIER
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|}
+        \multicolumn{2}{c}{{\bf Pares básicos de la Transformada de Fourier }} \\
+        \hline
+        $\mathbf{x(t)}$ & $\mathbf{X(\omega)}$ \\
+        \hline
+        $e^{j\omega_0 t }$ & $2\pi\delta (\omega-\omega_0)$ \\
+        \hline
+        $\cos(\omega_0 t)$ & $\pi \left [ \delta(\omega-\omega_0 ) + \delta(\omega+\omega_0 ) \right ]$\\
+        \hline
+        $\sen(\omega_0 t)$ & $\displaystyle\frac{\pi}{j} \left [ \delta(\omega-\omega_0 ) - \delta(\omega+\omega_0 ) \right ]$\\
+        \hline
+        $1$ & $2\pi\delta(\omega)$ \\
+        \hline
+        $\prod \left ( \displaystyle\frac{t}{2T_1}\right ) = \left \{ \begin{array}{lc} 1 & |t| < T_1 \\ 0 & |t| >T_1 \\ \end{array} \right.$ & $2 T_1 \sinc\left ( \displaystyle\frac{\omega T_1}{\pi} \right ) = \displaystyle\frac{2 \sen(\omega T_1)}{\omega}$ \\
+        \hline 
+        $\displaystyle\frac{W}{\pi} \sinc\left ( \frac{Wt}{\pi} \right ) = \displaystyle\frac{\sen(Wt)}{\pi t}$ & $X(\omega) = \left \{ \begin{array}{lc} 1 & |\omega| < W \\ 0 & |\omega| >W \\ \end{array} \right. $ \\ 
+        \hline 
+        $\delta(t)$ & $1$ \\
+        \hline
+        $\delta(t-t_0)$ & $e^{-j \omega t_0}$ \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|}
+        \multicolumn{2}{c}{{\bf Propiedades de la Transformada de Fourier }} \\
+        \hline
+        {\bf Señal} & {\bf Transformada de Fourier} \\
+        \hline
+        $x(t)$ & $X(\omega)$ \\
+        \hline
+        $y(t)$ & $Y(\omega)$ \\
+        \hline
+        $a x(t) + b y(t) $ & $a X(\omega) + b Y(\omega)$ \\
+        \hline
+        $x(t-t_0)$ & $e^{-j \omega t_0} X(\omega)$ \\
+        \hline
+        $e^{-j\omega_0 t} x(t)$ & $X(\omega - \omega_0)$ \\
+        \hline
+        $x(at)$ & $\displaystyle\frac{1}{|a|}X \left ( \displaystyle\frac{\omega}{A} \right )$ \\
+        \hline
+        $x(t) \ast y(t))$ & $X(\omega) \cdot Y(\omega)$ \\
+        \hline
+        $x(t) \cdot y(t))$ & $\displaystyle\frac{1}{2\pi} X(\omega) \ast Y(\omega)$ \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % ANALÓGICO
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % MODULACIONES LINEALES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|c|c|c|}
+        \multicolumn{3}{c}{{\bf MODULACIONES LINEALES }} \\
+        \hline
+        & {\bf Modulación AM } & {\bf Modulación DBL} \\
+        \hline
+        $x_p(t)$ & $A_p \cdot [1 + m x_n(t)] \cdot \cos(\omega_p t)$ & $A_p \cdot x(t) \cdot \cos(\omega_p t)$ \\
+        \hline
+        $P_m$ & $\displaystyle\frac{A_p^2}{2} + \displaystyle\frac{m^2 A_p^2}{2} S_{xn} = P_p + 2P_{BL}$ & $\displaystyle\frac{A_p^2}{2}S_x = 2 P_{BL}$ \\
+        \hline
+        $P_{CRESTA}$ & $\displaystyle\frac{1}{2} A_p^2 (1+m)^2$ & $\displaystyle\frac{1}{2} [A_p \cdot |x(t)|_{max}]^2$ \\
+        \hline
+        $B_T$ & \multicolumn{2}{c|}{$2 \cdot W_x$} \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|c|}
+        \multicolumn{4}{c}{{\bf RUIDO EN MODULACIONES LINEALES }} \\
+        \hline
+        \multicolumn{2}{|c|}{{\bf Ruido en modulación de amplitud}} & \multicolumn{2}{c|}{{\bf Ruido en demodulación (detector síncrono)}} \\
+        \hline
+        Señal banda base & & Modulación AM & Modulación DBL \\
+        \hline
+        $\gamma = \displaystyle\frac{P_R}{N_0 W_x}$ & $\left ( \displaystyle\frac{S}{N} \right )_R = \displaystyle\frac{W_x}{B_T} \cdot \gamma $ & $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{m^2 S_{xn}}{1 + m^2 S_{xn}} \cdot \gamma $ & $\left ( \displaystyle\frac{S}{N} \right )_D = \gamma $ \\[1ex]
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|c|c|}
+        \multicolumn{2}{c}{{\bf Ruido en modulación AM (detector de envolvente)}} \\
+        \hline
+        $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{m^2 S_{xn}}{1 + m^2 S_{xn}} \gamma \quad \text{si} \quad \left ( \displaystyle\frac{S}{N} \right )_R \geq \left ( \displaystyle\frac{S}{N} \right )_{RTh}$ & $\text{No hay señal si } \left ( \displaystyle\frac{S}{N} \right )_R < \left ( \displaystyle\frac{S}{N} \right )_{RTh}$ \\[1ex]
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % MODULACIONES ANGULARES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|c|c|}
+        \multicolumn{2}{c}{{\bf MODULACIONES ANGULARES }} \\
+        \hline
+        & {\bf Modulación FM } \\
+        \hline
+        Señal & $x(t) = A_p \cdot \cos \left ( \omega_p t + \omega_d \int^t x(\lambda) d\lambda \right )$  \\
+        \hline
+        Desviación máxima de fase & $D = \frac{\omega_d |x(t)|_{max}}{W_x}$  \\
+        \hline
+        \multirow{2}{*}{Ancho de banda}  & $B_T \approx 2 (D+a) W_x$  \\
+         & $a = \left \{ \begin{array}{lc} 2 & 2 \leq D \leq 10 \\ 1 & c.c. \end{array} \right. $ \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|c|c|c|}
+        \multicolumn{3}{c}{{\bf Ruido en demodulación angular }} \\
+        \hline
+        & {\bf FM} & {\bf FM deénfasis} ($B_{de} \ll W_x$)\\
+        \hline
+        $\left ( \frac{S}{N} \right )_D$ & $3D^2 S_{xn}\gamma$ & $\left ( \frac{\omega_d}{B_{de}} \right )^2 S_x \gamma$  \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % TEORÍA DE LA DETECCIÓN - COTAS
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+    \renewcommand{\arraystretch}{1}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        {\bf Sistema M-ario} & {\bf Cota de la unión} & {\bf Cota de la unión}\\
+        {\bf unidimensional} & & {\bf simplificada} \\
+        \hline
+        \rule{0pt}{25pt} $P_e = \displaystyle\frac{2(M-1)}{M} Q \left ( \displaystyle\frac{d}{\sqrt{2 N_0}} \right ) $ & $P_e \leq \displaystyle\frac{1}{M} \displaystyle\sum\limits_{i=1}^{M} \displaystyle\sum\limits_{\substack{k=1 \\ k\neq i}}^{M} Q \left ( \displaystyle\frac{d_{ik}}{\sqrt{2 N_0}} \right )$ & $P_e \leq (M-1) \cdot Q \left ( \displaystyle\frac{d_{min}}{\sqrt{2 N_0}} \right )$\\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+    
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % MODULACIONES PASO BANDA
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    \renewcommand{\arraystretch}{2.2}
+        \begin{tabular}{|c|c|c|}
+            \multicolumn{3}{c}{{\bf Modulaciones paso banda}}\\
+            \hline
+            \multirow{2}{*}{PSK} & $M=2$ & $P_e = Q\left ( \displaystyle\sqrt{\displaystyle\frac{2 E_b}{N_0}} \right)$ \\[1ex]
+            \cline{2-3}
+            & $M \geq 4$ & $P_e = 2 \cdot Q\left ( \sqrt{\displaystyle\frac{2 E_s}{N_0}} \sen\left ( \displaystyle\frac{\pi}{M} \right)  \right)$ \\
+            \hline
+            \multirow{2}{*}{FSK} & $M=2$ & $P_e = Q\left ( \sqrt{\displaystyle\frac{E_b}{N_0}} \right)$ \\
+            \cline{2-3}
+            & $M\geq 4$ & $P_e = (M-1) \cdot Q\left ( \sqrt{\displaystyle\frac{E_s}{N_0}} \right)$ \\
+            \hline
+            QAM & $log_2(M)$ par & $P_e = 4 \left ( 1 - \displaystyle\frac{1}{\sqrt{M}} \right ) \cdot Q\left ( \sqrt{\displaystyle\frac{3 \cdot E_s}{(M-1) \cdot N_0}} \right)$ \\
+            \hline
+        \end{tabular}
+        \renewcommand{\arraystretch}{1}
+        \vspace{0.5cm}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FDP NORMAL
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    \renewcommand{\arraystretch}{2}
+        \begin{tabular}{|c|c|}
+            \hline 
+            Función de densidad de probabilidad normal & $f(x) = \displaystyle\frac{1}{\sigma \sqrt{2 \pi}} e^{- \displaystyle\frac{(x - \mu)^2}{2 \sigma^2}}$ \\
+            \hline
+        \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % PROBABILIDAD DE ERROR DE BIT
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            & Codificación Gray (ASK, QAM, PSK) & FSK \\ 
+            \hline
+            Probabilidad de error de bit & $P_b = \displaystyle\frac{1}{log_2(M)} P_e$ & $P_b = \displaystyle\frac{2^{log_2(M)-1}}{2^{log_2(M)}-1} P_e$ \\
+            \hline
+        \end{tabular}
+        \renewcommand{\arraystretch}{1} 
+        \vspace{0.5cm}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FILTRO DE CO\senO ALZADO
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
+    % \renewcommand{\arraystretch}{1.5}
+    %     \begin{tabular}{|c|c|}
+    %         \multicolumn{2}{c}{{\bf Filtro de co\seno alzado, $0 \leq \alpha \leq 1$}}\\
+    %         \hline
+    %         $h(t) = \sinc \left ( \displaystyle\frac{t}{T} \right ) \cdot \displaystyle\frac{\cos \left ( \frac{\pi \alpha t}{T} \right ) }{1 - \displaystyle\frac{4 \alpha^2 t^2}{T^2}}$  & 
+    %         $H(\omega) = \left \{ \begin{array}{lc} 1 & |\omega| \leq \pi \displaystyle\frac{1-\alpha}{T} \\ \displaystyle\frac{1}{2} \left [ 1 + \cos \left ( \frac{T}{2\alpha} \cdot \left ( |\omega| - \pi \frac{1-\alpha}{T} \right ) \right ) \right ] & \pi \frac{1-\alpha}{T} \leq |\omega| \leq \pi \displaystyle\frac{1+\alpha}{T}\\ 0 & c.c. \end{array} \right. $ \\ 
+    %         \hline
+    %     \end{tabular}
+    %     \renewcommand{\arraystretch}{1}
+    %     \vspace{0.5cm}
+  
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|c|}
+            \multicolumn{1}{c}{{\bf Filtro de coseno alzado, $0 \leq \alpha \leq 1$}}\\
+            \hline
+            $H(\omega) = \left \{ \begin{array}{lc} 1 & |\omega| \leq \pi \displaystyle\frac{1-\alpha}{T} \\ \displaystyle\frac{1}{2} \left [ 1 + \cos \left ( \frac{T}{2\alpha} \cdot \left ( |\omega| - \pi \frac{1-\alpha}{T} \right ) \right ) \right ] & \pi \frac{1-\alpha}{T} \leq |\omega| \leq \pi \displaystyle\frac{1+\alpha}{T}\\ 0 & c.c. \end{array} \right. $ \\ 
+            \hline
+        \end{tabular}
+        \renewcommand{\arraystretch}{1}
+        \vspace{0.5cm}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % PAM BANDA BASE
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\arraystretch}{2}
+        \begin{tabular}{|c|c|c|}
+            \multicolumn{3}{c}{{\bf Densidad espectral de potencia de la PAM (banda base)}}\\
+            \hline
+            $x(t) = \displaystyle\sum\limits_{n=-\infty}^{\infty} a_n h(t-nT)$ &
+            $S_x(\omega) = \displaystyle\frac{1}{T} |H(\omega)|^2 S_a(\omega)$ &
+            $S_a(\omega) = \displaystyle\sum\limits_{m=-\infty}^{\infty} R_a[m] \cdot e^{-j\omega m T}$\\
+            \hline
+        \end{tabular}
+        \renewcommand{\arraystretch}{1}
+        \vspace{0.5cm}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % ANCHO DE BANDA PASO BANDA
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        \renewcommand{\arraystretch}{2}
+        \begin{tabular}{|c|c|c|}
+            \multicolumn{3}{c}{{\bf Ancho de banda ($Hz$) de las modulaciones paso banda }} \\
+            \hline
+            \multirow{2}{*}{Modulación} & Valores nominales$^*$ & Valores óptimos$^{**}$ \\
+            \cline{2-3}
+            & $B$ & $B$ \\
+            \hline
+            M-PSK y M-QAM & $\displaystyle\frac{2 R_b}{log_2(M)} = \displaystyle\frac{2}{T}$ & $\displaystyle\frac{R_b}{log_2(M)} = \displaystyle\frac{1}{T}$ \\[1ex]
+            \hline
+            M-FSK & $\displaystyle\frac{(M+3) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+3)}{2\cdot T}$ & $\displaystyle\frac{(M+1) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+1)}{2\cdot T}$ \\[1ex]
+            \hline
+            & $^* \Rightarrow h(t) = \left \{ \begin{array}{lc} \displaystyle\frac{1}{\sqrt{T}} & 0\leq t < T \\ 0 & \text{c.c.} \end{array}\right. $ & $^{**} \Rightarrow h(t) = \displaystyle\frac{\sen\left ( \displaystyle\frac{\pi}{T} t \right ) }{\displaystyle\frac{\pi}{T}t}$ \\
+            \hline
+        \end{tabular}
+        \renewcommand{\arraystretch}{1}
+        \vspace{0.5cm}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % TABLA DE Q(X)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{tabular}{cc|cc|cc|cc}
+        \multicolumn{8}{c}{{\bf Tabla de valores de Q(x)}} \\
+        \hline
+        {\bf x} & {\bf Q(x)} & {\bf x} & {\bf Q(x)} & {\bf x} & {\bf Q(x)} & {\bf x} & {\bf Q(x)} \\
+        \hline
+        0,0 & 5,000000e-01 & 1,8 & 3,593032e-02 & 3,6 & 1,591086e-04 & 5,4 & 3,332043e-08 \\
+        0,1 & 4,601722e-01 & 1,9 & 2,871656e-02 & 3,7 & 1,077997e-04 & 5,5 & 1,898956e-08 \\
+        0,2 & 4,207403e-01 & 2,0 & 2,275013e-02 & 3,8 & 7,234806e-05 & 5,6 & 1,071760e-08 \\
+        0,3 & 3,820886e-01 & 2,1 & 1,786442e-02 & 3,9 & 4,809633e-05 & 5,7 & 5,990378e-09 \\
+        0,4 & 3,445783e-01 & 2,2 & 1,390345e-02 & 4,0 & 3,167124e-05 & 5,8 & 3,315742e-09 \\
+        0,5 & 3,085375e-01 & 2,3 & 1,072411e-02 & 4,1 & 2,065752e-05 & 5,9 & 1,817507e-09 \\
+        0,6 & 2,742531e-01 & 2,4 & 8,197534e-03 & 4,2 & 1,334576e-05 & 6,0 & 9,865876e-10 \\
+        0,7 & 2,419637e-01 & 2,5 & 6,209665e-03 & 4,3 & 8,539898e-06 & 6,1 & 5,303426e-10 \\
+        0,8 & 2,118554e-01 & 2,6 & 4,661189e-03 & 4,4 & 5,412542e-06 & 6,2 & 2,823161e-10 \\
+        0,9 & 1,840601e-01 & 2,7 & 3,466973e-03 & 4,5 & 3,397673e-06 & 6,3 & 1,488226e-10 \\
+        1,0 & 1,586553e-01 & 2,8 & 2,555131e-03 & 4,6 & 2,112456e-06 & 6,4 & 7,768843e-11 \\
+        1,1 & 1,356661e-01 & 2,9 & 1,865812e-03 & 4,7 & 1,300809e-06 & 6,5 & 4,016001e-11 \\
+        1,2 & 1,150697e-01 & 3,0 & 1,349898e-03 & 4,8 & 7,933274e-07 & 6,6 & 2,055790e-11 \\
+        1,3 & 9,680049e-02 & 3,1 & 9,676035e-04 & 4,9 & 4,791830e-07 & 6,7 & 1,042099e-11 \\
+        1,4 & 8,075666e-02 & 3,2 & 6,871378e-04 & 5,0 & 2,866516e-07 & 6,8 & 5,230951e-12 \\
+        1,5 & 6,680720e-02 & 3,3 & 4,834242e-04 & 5,1 & 1,698268e-07 & 6,9 & 2,600125e-12 \\
+        1,6 & 5,479929e-02 & 3,4 & 3,369291e-04 & 5,2 & 9,964437e-08 & 7,0 & 1,279813e-12 \\
+        1,7 & 4,456546e-02 & 3,5 & 2,326291e-04 & 5,3 & 5,790128e-08 & \\                 
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+\end{center}
+
+\end{document}
