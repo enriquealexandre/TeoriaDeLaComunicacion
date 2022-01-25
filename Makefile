@@ -9,5 +9,5 @@ DIRS=$$(ls -d */)
 all: 2 3 4 5 6 
 
 clean:
-	@for x in $(DIRS); do cd ./$$x/Boletín; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..; done;
+	@for x in $(DIRS); do cd ./$$x\Boletín; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..; done;
 
