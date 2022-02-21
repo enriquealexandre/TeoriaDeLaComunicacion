@@ -49,19 +49,27 @@ EJEMPLOS EN SIMULINK
 ********************
 
 Adicionalmente a los ejemplos realizados directamente en código Matlab, aquí hay algunos ejemplos realizados con Simulink. 
-Todos han sido probados utilizando la versión R2020b de Matlab. 
+Todos han sido probados utilizando la versión R2021b de Matlab. 
 
 [Simulink_AM.slx](Simulink_AM.slx)
 
     Aquí se muestra un ejemplo de modulación AM utilizando tanto un detector síncrono como uno de envolvente. 
 
+[Simulink_DBL.slx](Simulink_DBL.slx)
+
+    Lo mismo que para el caso de AM. Se muestra una modulación DBL, y la recepción se realiza tanto con un detector síncrono como con uno de envolvente, para ver qué sucede en este último caso. 
+
+[Simulink_FM.slx](Simulink_FM.slx)
+
+    Lo mismo, en este caso para una modulación FM. 
+
 [Simulink_Audio.slx](Simulink_Audio.slx)
 
     Sistema con dos moduladores lineales (AM y DBL) en el que la señal de entrada es un archivo de audio. Se puede escuchar la señal recibida para distintas combinaciones de modulador/detector. 
 
-[Simulink_DBL.slx](Simulink_DBL.slx)
+[Simulink_Interferencia.slx](Simulink_Interferencia.slx)
 
-    Lo mismo que para el caso de AM. Se muestra una modulación DBL, y la recepción se realiza tanto con un detector síncrono como con uno de envolvente, para ver qué sucede en este último caso. 
+    Ejemplo de receptor de FM con una interferencia sinusoidal. Se puede ver el resultado sin y con filtros de preénfasis y deénfasis.
 
 [Simulink_Problema2_2.slx](Simulink_Problema2_2.slx)
 
