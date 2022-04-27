@@ -9,7 +9,7 @@
 
 
 %Probabilidades de cada uno de los símbolos
-p = [0.2 0.8];
+p = [0.3 0.7];
 mu = [-1 1];
 x = -4:0.01:4;
 sigma = ones(size(p));
