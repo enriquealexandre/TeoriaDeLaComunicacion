@@ -1,7 +1,8 @@
-\documentclass[idioma,boletin]{uah}
+\documentclass[es,boletin]{uah}
 
 \usepackage{subfigure}
 \usepackage{amsfonts}
+\usepackage{hyperref}
 
 \tema{4}
 \titulo{Teoría de la detección}{Detection theory}
@@ -11,11 +12,122 @@
 \titulacion{Grados TIC}
 \asignatura{Teoría de la Comunicación}{Communication Theory}
 \departamento{Teoría de la Señal y Comunicaciones}
-\curso{2021/2022} % Do not show year
+\curso{2022/2023} % Do not show year
 
 \maketitle
 	
+\seccion{Conceptos a repasar}{Key concepts}
+\texto{
+Antes de hacer estos ejercicios es importante repasar y tener claros los siguientes conceptos teóricos:
 
+\begin{itemize}
+\item Esquema general de un sistema de comunicaciones digital. 
+\item Conceptos de base ortonormal, espacio de señal y constelación.
+\item Cómo se calcula una base ortonormal a partir de un conjunto de señales transmitidas.
+\item Criterios de decisión (MAP y ML). Regiones de decisión.
+\item Cálculo de la probabilidad de error.
+\item Cotas. Diferencias entre la cota de la unión y la cota de la unión simplificada.
+\item Implementación del demodulador: banco de correladores o filtros adaptados.
+\item Implementación del decisor: esquema teórico o implementación práctica.
+\end{itemize}
+}
+{
+	Before doing these exercises it is important to review and understand the following concepts:	
+
+	\begin{itemize}
+		\item General diagram of a digital communication system.
+		\item Concepts of orthonormal basis, signal space and constellation.
+		\item How an orthonormal basis is computed from a set of transmitted signals.
+		\item Decision criteria (MAP and ML). Decision regions.
+		\item Calculation of the probability of error.
+		\item Bounds. Differences between the union bound and the simplified union bound.
+		\item Demodulator implementation: bank of correlators or matched filters.
+		\item Decisor implementation: theoretical scheme or practical implementation.
+	\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\seccion{Problemas básicos}{Basic problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\texto{
+	Este primer bloque de problemas son problemas extraídos en su mayoría de la bibliografía de la asignatura, y consisten en algunos cálculos básicos que es necesario dominar.
+
+}
+{
+	This first part includes problems mostly extracted from the bibliography aimed at practicing basic calculations needed for the rest of the lesson.
+
+}
+
+
+
+\Problema{
+	\cite{Artes} Considere la constelación de señales $\{s_i(t), i=0,\cdots , M_1\}$, idénticamente nula fuera del intervalo $0\leq t<T$, y de valor 
+	\begin{displaymath}
+		s_i(t) = \sen\left ( \frac{2\pi(i+1)t}{T} \right )
+	\end{displaymath}
+	dentro de este. Determine una base ortonormal para representar la constelación de señales, sus coordenadas con respecto a esta base, la distancia entre cualesquiera dos señales, la energía de cada señal de la constelación y la energía media de la constelación.
+}
+{
+	\begin{enumerate}
+		\item $\phi_i(t) = \sqrt{\frac{2}{T}} \sen\left ( \frac{2\pi(i+1)t}{T} \right )$
+ 	 	\item $d_{ij} = \sqrt{T}$
+    	\item $Ei = E_s = \frac{T}{2}$	
+	\end{enumerate}
+}
+{
+	\cite{Artes} Consider the constellation of signals $\{s_i(t), i=0,\cdots , M_1\}$, identically null outside the interval $0\leq t<T$, and of value
+	\begin{displaymath}
+	s_i(t) = \sin\left ( \frac{2\pi(i+1)t}{T} \right )
+	\end{displaymath}
+	inside it. Determine an orthonormal basis to represent the constellation of signals, its coordinates with respect to this basis, the distance between any two signals, the energy of each signal in the constellation, and the mean energy of the constellation.
+}
+{
+	\begin{enumerate}
+		\item $\phi_i(t) = \sqrt{\frac{2}{T}} \sen\left ( \frac{2\pi(i+1)t}{T} \right )$
+ 	 	\item $d_{ij} = \sqrt{T}$
+    	\item $Ei = E_s = \frac{T}{2}$	
+	\end{enumerate}
+}
+
+
+\Problema{
+	\cite{Sklar} Determina si $s_1(t)$ y $s_2(t)$ son ortogonales en el intervalo $(-1.5T<t<1.5T)$, donde $s_1(t) = \cos(\omega_1 t + \phi_1)$, $s_2(t) = \cos(\omega_2 t + \phi_2)$, y $\omega_2 = 2\pi/T$ para los siguientes casos:
+
+	\begin{enumerate}
+		\item $\omega_1 = \omega_2$ y $\phi_1 = \phi_2$
+  		\item $\omega_1 = 2 \omega_2$ y $\phi_1 = \phi_2$
+    	\item $\omega_1 = \omega_2$ y $\phi_1 = \phi_2 + \pi/2$
+     	\item $\omega_1 = \omega_2$ y $\phi_1 = \phi_2 + \pi$
+	\end{enumerate}
+}
+{
+	\begin{enumerate}
+		\item No son ortogonales.
+  		\item Sí son ortogonales.
+    	\item Sí son ortogonales
+     	\item No son ortogonales
+	\end{enumerate}
+}
+{
+	\cite{Sklar} Determine whether or not $s_1(t)$ and $s_2(t)$ are orthogonal over the interval $(-1.5T<t<1.5T)$, where $s_1(t) = \cos(\omega_1 t + \phi_1)$, $s_2(t) = \cos(\omega_2 t + \phi_2)$, and $\omega_2 = 2\pi/T$ for the following cases:
+
+	\begin{enumerate}
+		\item $\omega_1 = \omega_2$ and $\phi_1 = \phi_2$
+  		\item $\omega_1 = 2 \omega_2$ and $\phi_1 = \phi_2$
+    	\item $\omega_1 = \omega_2$ and $\phi_1 = \phi_2 + \pi/2$
+     	\item $\omega_1 = \omega_2$ and $\phi_1 = \phi_2 + \pi$
+	\end{enumerate}
+}
+{
+	\begin{enumerate}
+		\item Not orthogonal
+  		\item Orthogonal
+    	\item Orthogonal
+     	\item Not orthogonal
+	\end{enumerate}
+}
 
 %%%%%%%%%%%%%
 % PROBLEMA 1
@@ -90,8 +202,6 @@
 	{\begin{figure}[h!]\centering\includegraphics[width=6cm]{./Figuras/Problema4_1_sol}\end{figure}}
 }		
 
-\newpage
-
 %%%%%%%%%%%%%
 % PROBLEMA 2
 %%%%%%%%%%%%%
@@ -160,7 +270,6 @@ Calculate:
 \end{enumerate}
 }
 
-\newpage
 
 %%%%%%%%%%%%%
 % PROBLEMA 3
@@ -206,9 +315,6 @@ In order to transmit a set of eight equiprobable symbols by means of a baseband 
 
 \end{enumerate}
 }
-
-
-\newpage
 
 %%%%%%%%%%%%%
 % PROBLEMA 4
@@ -267,7 +373,184 @@ In order to transmit a set of eight equiprobable symbols by means of a baseband 
 \end{enumerate}
 }
 
+
+%%%%%%%%%%%%%
+% PROBLEMA 9
+%%%%%%%%%%%%%
+\Problema{
+
+Sea el conjunto de señales dado por la expresión:
+	
+	\begin{displaymath}
+		s_i(t) = \left \{ 
+		\begin{array}{ll}
+		\sqrt{\frac{2E}{T}} cos \left (\omega_c t + i \frac{\pi}{4} \right ) & 0 \leq t < T \\
+		0 & c.c.
+		\end{array}
+		\right.
+	\end{displaymath}
+
+donde $i=1,2,3,4$ y $\omega_c  = n_c\cdot \frac{2\pi}{T}$ para algún valor entero $n_c$.
+
+\begin{enumerate}
+	\item ¿Cuál es la dimensión, $N$, del espacio generado por este conjunto de señales?
+	\item Obtenga una base ortonormal para representar este conjunto.
+	\item Obtenga los vectores de señal de cada una de las señales $s_i(t)$.
+	\item Dibuje los vectores de señal en el espacio de señal.
+\end{enumerate}
+
+}
+{
+
+\begin{enumerate}
+	\item $N=2$
+	\item \
+	\begin{displaymath}
+		\begin{array}{ll}
+			\phi_1(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{\pi}{4} \right ) & 0 \leq t < T \\
+			\phi_2(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{3\pi}{4} \right ) & 0 \leq t < T \\
+		\end{array}
+	\end{displaymath}
+	\item \
+	\begin{displaymath}
+		\begin{array}{ll}
+			\bar{s_1} = \left [\sqrt{E}, 0 \right ] & \bar{s_2} = \left [\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ] \\
+			\bar{s_3} = \left [0, \sqrt{E} \right ] & \bar{s_4} = \left [-\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ]\\
+		\end{array}
+	\end{displaymath}
+	\item \
+	\begin{figure*}[h!] 	\centering\includegraphics[width=4cm]{./Figuras/Problema4_9_sol} 	\end{figure*}
+\end{enumerate}
+
+}
+{
+
+	Consider the signal set given by:
+	
+	\begin{displaymath}
+		s_i(t) = \left \{ 
+		\begin{array}{ll}
+		\sqrt{\frac{2E}{T}} cos \left (\omega_c t + i \frac{\pi}{4} \right ) & 0 \leq t < T \\
+		0 & c.c.
+		\end{array}
+		\right.
+	\end{displaymath}
+
+where $i=1,2,3,4$ and $\omega_c  = n_c\cdot \frac{2\pi}{T}$ for some integer value $n_c$.
+
+\begin{enumerate}
+	\item Which is the dimension, $N$, of the space generated by this signal set?
+	\item Obtain an orthonormal basis for this set.
+	\item Obtain the signal vectors for each of the signals $s_i(t)$.
+	\item Plot the signal vectors in the signal space.
+\end{enumerate}
+	
+}
+{
+
+\begin{enumerate}
+	\item $N=2$
+	\item \
+	\begin{displaymath}
+		\begin{array}{ll}
+			\phi_1(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{\pi}{4} \right ) & 0 \leq t < T \\
+			\phi_2(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{3\pi}{4} \right ) & 0 \leq t < T \\
+		\end{array}
+	\end{displaymath}
+	\item \
+	\begin{displaymath}
+		\begin{array}{ll}
+			\bar{s_1} = \left [\sqrt{E}, 0 \right ] & \bar{s_2} = \left [\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ] \\
+			\bar{s_3} = \left [0, \sqrt{E} \right ] & \bar{s_4} = \left [-\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ]\\
+		\end{array}
+	\end{displaymath}
+	\item \
+	\begin{figure*}[h!] 	\centering\includegraphics[width=5cm]{./Figuras/Problema4_9_sol} 	\end{figure*}
+\end{enumerate}
+
+}
+
+%%%%%%%%%%%%%
+% PROBLEMA 12
+%%%%%%%%%%%%%
+\Problema{
+
+	Se dispone de un sistema de transmisión digital que transmite los símbolos $0$ y $A$. A la entrada del receptor el ruido es aditivo, blanco y gaussiano, con densidad espectral de potencia $N_0/2 = 0.01 W/Hz$. Calcular la amplitud con que deben ser recibidos para garantizar que solo uno de cada millón de bits enviados sea recibido erróneamente.
+}
+{
+
+$A > 0.96$
+
+}
+{
+
+	A digital transmission system transmits the symbols $0$ and $A$. At the receiver, the noise can be considered as white and Gaussian, with power spectral density $N_0/2 = 0.01 W/Hz$. If we suppose rectangular pulses, calculate the amplitude at the transmitter to guarantee that only $1$ out of $10^6$ bits is wrongly received.
+	
+}
+{
+
+$A > 0.96$
+
+}
+
+%%%%%%%%%%%%%
+% PROBLEMA 13
+%%%%%%%%%%%%%
+\Problema{
+
+	Sea un sistema de transmisión digital con dígitos equiprobables $0$ y $A$, y $\left ( \frac{S}{N} \right )_R=50$. 
+	
+	Calcule las probabilidades de error $P_{e|0}$ (probabilidad de error condicionada a que se ha transmitido el símbolo 0), $P_{e|A}$ y $P_e$ cuando el umbral se sitúa en el valor $V=0.4 A$ y compárelo con el mínimo dado por la ecuación $P_e=Q\left ( \frac{A}{2\sigma} \right )$.
+}
+{
+
+\begin{itemize}
+	\item $P_{e|0} = Q(4)$
+	\item $P_{e|A} = Q(6)$
+	\item $P_e = 1.58 \cdot 10^{-5}$
+	\item $P_{e_{min}} = 2.87 \cdot 10^{-7}$
+\end{itemize}
+}
+{
+
+	Consider a digital system with equiprobable digits $0$ and $A$, and $\left ( \frac{S}{N} \right )_R=50$. 
+	
+	
+	Calculate the error probabilities $P_{e|0}$ (error probability conditioned to the transmission of symbol 0), $P_{e|A}$ and $P_e$ when the threshold is situated in $V=0.4 A$, and compare it when the minimum given by the equation $P_e=Q\left ( \frac{A}{2\sigma} \right )$.
+}
+{
+
+\begin{itemize}
+	\item $P_{e|0} = Q(4)$
+	\item $P_{e|1} = Q(6)$
+	\item $P_e = 1.58 \cdot 10^{-5}$
+	\item $P_{e_{min}} = 2.87 \cdot 10^{-7}$
+\end{itemize}
+}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
+\seccion{Problemas adicionales}{Aditional problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\texto{
+	Estos problemas son algo más elaborados que los anteriores, en muchos casos extraídos de exámenes antiguos.
+
+}
+{
+	These problems are slightly more ellaborated than the previous ones, in many cases extracted from old exams.
+
+}
+
+
 
 %%%%%%%%%%%%%
 % PROBLEMA 5
@@ -443,8 +726,7 @@ where $T$ is the symbol period.
 % PROBLEMA 7
 %%%%%%%%%%%%%
 \Problema{
-
-Un sistema de comunicación transmite las señales $s_i(t)$, $i = 0,1,2,3,4,5,6,7$.
+[Sept1999] Un sistema de comunicación transmite las señales $s_i(t)$, $i = 0,1,2,3,4,5,6,7$.
 
 \begin{displaymath}
 	\begin{array}{llll}
@@ -479,8 +761,7 @@ por un canal con ruido aditivo blanco gaussiano con densidad espectral de potenc
 \end{enumerate}
 }
 {
-
-A communication system transmits the signals $s_i(t)$, $i = 0,1,2,3,4,5,6,7$.
+[Sep1999] A communication system transmits the signals $s_i(t)$, $i = 0,1,2,3,4,5,6,7$.
 
 \begin{displaymath}
 	\begin{array}{llll}
@@ -521,8 +802,7 @@ across an AWGN channel with power spectral density $N_0/2$.
 % PROBLEMA 8
 %%%%%%%%%%%%%
 \Problema{
-
-	Las señales $s_i(t)$, $i=1,2,3,4$, se utilizan para transmitir cuatro mensajes equiprobables por un canal con ruido aditivo blanco gaussiano con densidad espectral de potencia de valor $N_0/2$. 
+[Junio1999] Las señales $s_i(t)$, $i=1,2,3,4$, se utilizan para transmitir cuatro mensajes equiprobables por un canal con ruido aditivo blanco gaussiano con densidad espectral de potencia de valor $N_0/2$. 
 	\ \\
 	
 	\begin{tabular}[h!]{ll}
@@ -584,8 +864,7 @@ across an AWGN channel with power spectral density $N_0/2$.
 
 }
 {
-
-	The signals $s_i(t)$, $i=1,2,3,4$, are used to transmit four equiprobable messages across an AWGN channel with power spectral density $N_0/2$. 
+[June1999] The signals $s_i(t)$, $i=1,2,3,4$, are used to transmit four equiprobable messages across an AWGN channel with power spectral density $N_0/2$. 
 	\ \\
 	
 	\begin{tabular}[h!]{ll}
@@ -648,101 +927,6 @@ across an AWGN channel with power spectral density $N_0/2$.
 \newpage
 
 
-%%%%%%%%%%%%%
-% PROBLEMA 9
-%%%%%%%%%%%%%
-\Problema{
-
-Sea el conjunto de señales dado por la expresión:
-	
-	\begin{displaymath}
-		s_i(t) = \left \{ 
-		\begin{array}{ll}
-		\sqrt{\frac{2E}{T}} cos \left (\omega_c t + i \frac{\pi}{4} \right ) & 0 \leq t < T \\
-		0 & c.c.
-		\end{array}
-		\right.
-	\end{displaymath}
-
-donde $i=1,2,3,4$ y $\omega_c  = n_c\cdot \frac{2\pi}{T}$ para algún valor entero $n_c$.
-
-\begin{enumerate}
-	\item ¿Cuál es la dimensión, $N$, del espacio generado por este conjunto de señales?
-	\item Obtenga una base ortonormal para representar este conjunto.
-	\item Obtenga los vectores de señal de cada una de las señales $s_i(t)$.
-	\item Dibuje los vectores de señal en el espacio de señal.
-\end{enumerate}
-
-}
-{
-
-\begin{enumerate}
-	\item $N=2$
-	\item \
-	\begin{displaymath}
-		\begin{array}{ll}
-			\phi_1(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{\pi}{4} \right ) & 0 \leq t < T \\
-			\phi_2(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{3\pi}{4} \right ) & 0 \leq t < T \\
-		\end{array}
-	\end{displaymath}
-	\item \
-	\begin{displaymath}
-		\begin{array}{ll}
-			\bar{s_1} = \left [\sqrt{E}, 0 \right ] & \bar{s_2} = \left [\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ] \\
-			\bar{s_3} = \left [0, \sqrt{E} \right ] & \bar{s_4} = \left [-\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ]\\
-		\end{array}
-	\end{displaymath}
-	\item \
-	\begin{figure*}[h!] 	\centering\includegraphics[width=4cm]{./Figuras/Problema4_9_sol} 	\end{figure*}
-\end{enumerate}
-
-}
-{
-
-	Consider the signal set given by:
-	
-	\begin{displaymath}
-		s_i(t) = \left \{ 
-		\begin{array}{ll}
-		\sqrt{\frac{2E}{T}} cos \left (\omega_c t + i \frac{\pi}{4} \right ) & 0 \leq t < T \\
-		0 & c.c.
-		\end{array}
-		\right.
-	\end{displaymath}
-
-where $i=1,2,3,4$ and $\omega_c  = n_c\cdot \frac{2\pi}{T}$ for some integer value $n_c$.
-
-\begin{enumerate}
-	\item Which is the dimension, $N$, of the space generated by this signal set?
-	\item Obtain an orthonormal basis for this set.
-	\item Obtain the signal vectors for each of the signals $s_i(t)$.
-	\item Plot the signal vectors in the signal space.
-\end{enumerate}
-	
-}
-{
-
-\begin{enumerate}
-	\item $N=2$
-	\item \
-	\begin{displaymath}
-		\begin{array}{ll}
-			\phi_1(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{\pi}{4} \right ) & 0 \leq t < T \\
-			\phi_2(t) = \sqrt{\frac{2}{T}} cos \left ( \omega_c t + \frac{3\pi}{4} \right ) & 0 \leq t < T \\
-		\end{array}
-	\end{displaymath}
-	\item \
-	\begin{displaymath}
-		\begin{array}{ll}
-			\bar{s_1} = \left [\sqrt{E}, 0 \right ] & \bar{s_2} = \left [\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ] \\
-			\bar{s_3} = \left [0, \sqrt{E} \right ] & \bar{s_4} = \left [-\sqrt{\frac{E}{2}}, \sqrt{\frac{E}{2}} \right ]\\
-		\end{array}
-	\end{displaymath}
-	\item \
-	\begin{figure*}[h!] 	\centering\includegraphics[width=5cm]{./Figuras/Problema4_9_sol} 	\end{figure*}
-\end{enumerate}
-
-}
 
 \newpage
 
@@ -907,63 +1091,158 @@ where $i=1,2,3,4$ and $\omega_c  = n_c\cdot \frac{2\pi}{T}$ for some integer val
 \end{enumerate}
 }
 
-%%%%%%%%%%%%%
-% PROBLEMA 12
-%%%%%%%%%%%%%
+
 \Problema{
+	[Junio2001] Dadas las dos constelaciones de la figura, donde las señales de la base son:
 
-	Se dispone de un sistema de transmisión digital que transmite los símbolos $0$ y $A$. A la entrada del receptor el ruido es aditivo, blanco y gaussiano, con densidad espectral de potencia $N_0/2 = 0.01 W/Hz$. Calcular la amplitud con que deben ser recibidos para garantizar que solo uno de cada millón de bits enviados sea recibido erróneamente.
+	\begin{displaymath}
+		\phi_1(t) = \left \{ \begin{array}{ll} \sqrt{\frac{2}{T}} \cos \left ( \frac{2\pi}{T} t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+	\end{displaymath}
+	\begin{displaymath}
+		\phi_2(t) = \left \{ \begin{array}{ll} \sqrt{\frac{2}{T}} \sen \left ( \frac{2\pi}{T} t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+	\end{displaymath}
+
+	se pide:
+
+	\begin{enumerate}
+		\item Obtener las expresiones temporales de la señales de las dos constelaciones.
+  \item Obtener la energía media transmitida por símbolo ($E_s$) en cada una de las dos constelaciones.
+  \item Calcular la cota de la unión de la probabilidad de error de símbolo en función de $E_s/N_0$ en las dos constelaciones.
+	\end{enumerate}
+
+	\begin{center}
+		\includegraphics[width=12cm]{Figuras/Problema2001}
+	\end{center}
 }
 {
+	\begin{enumerate}
+		\item $s_{1a}(t) = A \cdot \phi_1(t) + A \cdot \phi_2(t)$ \\
+		$s_{2a}(t) = -A \cdot \phi_1(t) + A \cdot \phi_2(t)$ \\
+		$s_{3a}(t) = -A \cdot \phi_1(t) - A \cdot \phi_2(t)$ \\
+		$s_{4a}(t) = A \cdot \phi_1(t) - A \cdot \phi_2(t)$ \\
+		$s_{1b}(t) = 2\sqrt{2}A \cdot \phi_1(t)$ \\
+		$s_{2b}(t) = \sqrt{2} A \cdot \phi_1(t) + \sqrt{2} A \cdot \phi_2(t)$ \\
+		$s_{3b}(t) = 0$ \\
+		$s_{4b}(t) = \sqrt{2} A \cdot \phi_1(t) - \sqrt{2} A \cdot \phi_2(t)$ \\
 
-$A > 0.96$
-
+		\item $P_e \leq 2 Q\left ( \frac{\sqrt{2}A}{\sqrt{N_0}} \right ) + Q \left ( \frac{2A}{\sqrt{N_0}} \right )$
+  
+		\item $E_{sa} = 2A^2$ \\
+				$E_{sb} = 4A^2$
+	\end{enumerate} 
 }
 {
+	[June2001] Given the two constellations in the figure, where the base signals are:
+		\begin{displaymath}
+		\phi_1(t) = \left \{ \begin{array}{ll} \sqrt{\frac{2}{T}} \cos \left ( \frac{2\pi}{T} t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+		\end{displaymath}
+		\begin{displaymath}
+		\phi_2(t) = \left \{ \begin{array}{ll} \sqrt{\frac{2}{T}} \sin \left ( \frac{2\pi}{T} t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+		\end{displaymath}
 
-	A digital transmission system transmits the symbols $0$ and $A$. At the receiver, the noise can be considered as white and Gaussian, with power spectral density $N_0/2 = 0.01 W/Hz$. If we suppose rectangular pulses, calculate the amplitude at the transmitter to guarantee that only $1$ out of $10^6$ bits is wrongly received.
-	
+		\begin{enumerate}
+			\item Obtain the temporal expressions of the signals of the two constellations.
+			   \item Obtain the average energy transmitted per symbol ($E_s$) in each of the two constellations.
+			   \item Compute the union bound of the symbol error probability as a function of $E_s/N_0$ in the two constellations.
+			\end{enumerate}
+
+			\begin{center}
+				\includegraphics[width=12cm]{Figuras/Problema2001}
+			\end{center}
 }
 {
+	\begin{enumerate}
+		\item $s_{1a}(t) = A \cdot \phi_1(t) + A \cdot \phi_2(t)$ \\
+		$s_{2a}(t) = -A \cdot \phi_1(t) + A \cdot \phi_2(t)$ \\
+		$s_{3a}(t) = -A \cdot \phi_1(t) - A \cdot \phi_2(t)$ \\
+		$s_{4a}(t) = A \cdot \phi_1(t) - A \cdot \phi_2(t)$ \\
+		$s_{1b}(t) = 2\sqrt{2}A \cdot \phi_1(t)$ \\
+		$s_{2b}(t) = \sqrt{2} A \cdot \phi_1(t) + \sqrt{2} A \cdot \phi_2(t)$ \\
+		$s_{3b}(t) = 0$ \\
+		$s_{4b}(t) = \sqrt{2} A \cdot \phi_1(t) - \sqrt{2} A \cdot \phi_2(t)$ \\
 
-$A > 0.96$
-
+		\item $P_e \leq 2 Q\left ( \frac{\sqrt{2}A}{\sqrt{N_0}} \right ) + Q \left ( \frac{2A}{\sqrt{N_0}} \right )$
+  
+		\item $E_{sa} = 2A^2$ \\
+				$E_{sb} = 4A^2$
+	\end{enumerate} 
 }
 
-%%%%%%%%%%%%%
-% PROBLEMA 13
-%%%%%%%%%%%%%
+
 \Problema{
+	[Junio2003] Un sistema de comunicación digital transmite cada $T$ segundos una señal escogida de modo equiprobable entre los elementos del conjunto $\{s_i(t)\}, i=1,2,3$. Se pide:
 
-	Sea un sistema de transmisión digital con dígitos equiprobables $0$ y $A$, y $\left ( \frac{S}{N} \right )_R=50$. 
-	
-	Calcule las probabilidades de error $P_{e|0}$ (probabilidad de error condicionada a que se ha transmitido el símbolo 0), $P_{e|A}$ y $P_e$ cuando el umbral se sitúa en el valor $V=0.4 A$ y compárelo con el mínimo dado por la ecuación $P_e=Q\left ( \frac{A}{2\sigma} \right )$.
+	\begin{enumerate}
+		\item Obtener una base ortonormal para representar $\{s_i(t)\}$.
+  		\item Calcular la energía de cada una de las señales.
+    	\item Dibujar la constelación de señal, con indicación expresa de las coordenadas de cada punto de señal.
+     \item Calcular la cota de la unión simplificada de la probabilidad de error en función de la energía media de símbolo, $E_s$, para un canal de ruido blanco gaussiano aditivo con media nula y densidad espectral de potencia $N_0$ W/Hz cuando se utiliza un receptor de correlación.
+	\end{enumerate}
+
+
+	\begin{displaymath}
+		s_1(t) = \left \{ \begin{array}{ll} 1 & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+	\end{displaymath}
+	\begin{displaymath}
+		s_2(t) = \left \{ \begin{array}{ll} -\cos\left ( \frac{\pi}{T}t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+	\end{displaymath}
+	\begin{displaymath}
+		s_3(t) = \left \{ \begin{array}{ll} \cos^2 \left ( \frac{\pi}{2T}t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+	\end{displaymath}
 }
 {
-
-\begin{itemize}
-	\item $P_{e|0} = Q(4)$
-	\item $P_{e|A} = Q(6)$
-	\item $P_e = 1.58 \cdot 10^{-5}$
-	\item $P_{e_{min}} = 2.87 \cdot 10^{-7}$
-\end{itemize}
+	\begin{enumerate}
+		\item $\phi_1(t) = \frac{s_1(t)}{\sqrt{T}}$ \\
+				$\phi_2(t) = \sqrt{\frac{2}{T}}s_2(t)$\\
+		\item $E_1=T$, $E_2 = \frac{T}{2}$, $E_3 = \frac{3T}{8}$\\
+				$E_s = \frac{5T}{8}$
+		\item $\bar{s_1} = (\sqrt{T},0)$ \\
+		$\bar{s_2} = (0, \sqrt{\frac{T}{2}})$ \\
+		$\bar{s_3} = (\frac{\sqrt{T}}{2},-\frac{1}{2}\sqrt{\frac{T}{2}})$ \\
+		\item $P_e \leq 2Q \left ( \sqrt{\frac{3 E_s}{10 N_0}} \right )$
+	\end{enumerate}
 }
 {
+	[June2003] A digital communication system transmits every $T$ seconds a signal chosen in an equiprobable way among the elements of the set $\{s_i(t)\}, i=1,2,3$. It is requested:
 
-	Consider a digital system with equiprobable digits $0$ and $A$, and $\left ( \frac{S}{N} \right )_R=50$. 
-	
-	
-	Calculate the error probabilities $P_{e|0}$ (error probability conditioned to the transmission of symbol 0), $P_{e|A}$ and $P_e$ when the threshold is situated in $V=0.4 A$, and compare it when the minimum given by the equation $P_e=Q\left ( \frac{A}{2\sigma} \right )$.
+\begin{enumerate}
+	\item Get an orthonormal basis to represent $\{s_i(t)\}$.
+   	\item Calculate the energy of each of the signals.
+    \item Draw the signal constellation, expressly indicating the coordinates of each signal point.
+    \item Compute the simplified union bound of the error probability as a function of the mean symbol energy, $E_s$, for an additive Gaussian white noise channel with zero mean and power spectral density $N_0$ W/Hz when a correlation receiver is used.
+\end{enumerate}
+
+\begin{displaymath}
+	s_1(t) = \left \{ \begin{array}{ll} 1 & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+\end{displaymath}
+\begin{displaymath}
+	s_2(t) = \left \{ \begin{array}{ll} -\cos\left ( \frac{\pi}{T}t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+\end{displaymath}
+\begin{displaymath}
+	s_3(t) = \left \{ \begin{array}{ll} \cos^2 \left ( \frac{\pi}{2T}t \right ) & 0\leq t < T \\ 0 & c.c. \end{array} \right .
+\end{displaymath}
+
 }
 {
-
-\begin{itemize}
-	\item $P_{e|0} = Q(4)$
-	\item $P_{e|1} = Q(6)$
-	\item $P_e = 1.58 \cdot 10^{-5}$
-	\item $P_{e_{min}} = 2.87 \cdot 10^{-7}$
-\end{itemize}
+	\begin{enumerate}
+		\item $\phi_1(t) = \frac{s_1(t)}{\sqrt{T}}$ \\
+				$\phi_2(t) = \sqrt{\frac{2}{T}}s_2(t)$\\
+		\item $E_1=T$, $E_2 = \frac{T}{2}$, $E_3 = \frac{3T}{8}$\\
+				$E_s = \frac{5T}{8}$
+		\item $\bar{s_1} = (\sqrt{T},0)$ \\
+		$\bar{s_2} = (0, \sqrt{\frac{T}{2}})$ \\
+		$\bar{s_3} = (\frac{\sqrt{T}}{2},-\frac{1}{2}\sqrt{\frac{T}{2}})$ \\
+		\item $P_e \leq 2Q \left ( \sqrt{\frac{3 E_s}{10 N_0}} \right )$
+	\end{enumerate}
 }
+
+
+\begin{thebibliography}{100}
+	\bibitem[Artés2012]{Artes} Antonio Artés et al. Comunicaciones Digitales. \url{http://www.tsc.uc3m.es/∼antonio/libro_comunicaciones}.
+	\bibitem[Sklar2001]{Sklar} Bernard Sklar. Digital Communications 2nd Ed. Pearson, 2001.
+	\end{thebibliography}
+	
+	
 
 
 \end{document}

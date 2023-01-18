@@ -1,4 +1,4 @@
-\documentclass[en,boletin]{uah}
+\documentclass[es,boletin]{uah}
 
 \usepackage{subfigure}
 
@@ -10,11 +10,78 @@
 \titulacion{Grados TIC}
 \asignatura{Teoría de la Comunicación}{Communication Theory}
 \departamento{Teoría de la Señal y Comunicaciones}
-\curso{2021/2022} % Do not show year
+\curso{2022/2023} % Do not show year
 
 \maketitle
 
-\ProblemaBoletin{
+\seccion{Conceptos a repasar}{Key concepts}
+\texto{
+Antes de hacer estos ejercicios es importante repasar y tener claros los siguientes conceptos teóricos:
+
+\begin{itemize}
+\item Modulaciones analógicas lineales: AM y DBL
+\item Manejo de fasores. Cálculo de componentes en fase y cuadratura de una señal.
+\item Detectores: detector síncrono y de envolvente
+\item Modulaciones angulares. Ancho de banda de transmisión e interferencia. Preénfasis y deénfasis.
+\item Receptor superheterodino
+\end{itemize}
+}
+{
+	Before doing these exercises it is important to review and understand the following concepts:	
+
+	\begin{itemize}
+		\item Linear analog modulations: AM and DSB.
+		\item Phasors. In-phase and quadrature components of a signal
+  		\item Detectors: synchronous and envelope detectors.
+  		\item Angular modulations. Bandwidth and interference. Preemphasis and deemphasis.
+  		\item Superheterodine receiver. 
+	\end{itemize}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\seccion{Problemas básicos}{Basic problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\texto{
+	Este primer bloque de problemas son problemas extraídos en su mayoría de la bibliografía de la asignatura, y consisten en algunos cálculos básicos que es necesario dominar.
+
+}
+{
+	This first part includes problems mostly extracted from the bibliography aimed at practicing basic calculations needed for the rest of the lesson.
+
+}
+
+
+
+
+
+\Problema{
+	\cite{Haykin} La señal AM $s(t) = A_p (1 + m x(t)) \cos(2\pi f_p t)$ se pasa a través del sistema de la figura.
+
+	\begin{center}
+		\includegraphics[width=10cm]{Figuras/ProblemaHaykin}
+	\end{center}
+
+	Suponiendo que el mensaje está normalizado y su ancho de banda es $W$, que $0\leq m \leq 1$ y que $f_p > 2W$, demostrar que es posible recuperar el mensaje a partir de la salida del sistema.
+}{
+	Es posible. Basta con que la frecuencia de corte del filtro paso bajo sea $2W$
+}{
+	The AM signal $s(t) = A_p (1 + m x(t)) \cos(2\pi f_p t)$ is applied to the system shown in the figure.
+
+	\begin{center}
+		\includegraphics[width=10cm]{Figuras/ProblemaHaykin_en}
+	\end{center}
+
+	Assuming that the message is normalized, its bandwidth is $W$, that $0\leq m \leq 1$ and that $f_p > 2W$, show that the message can be obtained from the system output.
+}{
+	It's possible just selecting the cut-off frequency of the low-pass filter to be $2W$
+}
+
+
+\Problema{
 
 		Una señal $x(t)$ periódica, de valor medio cero, ancho de banda $5 kHz$, amplitud máxima $4$ voltios y potencia media normalizada de $0.5$, modula en DBL a una portadora de $1 MHz$, obteniéndose una señal cuya potencia media es de $400 W$. Se pide:
 		\begin{enumerate}
@@ -48,40 +115,15 @@
 		\end{enumerate}
 		}
 		
-			
-\ProblemaBoletin{
+	
 
-	La señal $x(t) = cos(2\pi\cdot 10\cdot 10^3 t)+4\cdot cos(2\pi\cdot 15 \cdot10^3 t)+cos(2\pi \cdot 20\cdot10^3 t)$ modula en DBL a la portadora $p(t)=2\cdot cos(2\pi \cdot 10^5 t)$ y a continuación pasa a través de un filtro con respuesta $H(\omega)$ antes de llegar al detector, tal y como se puede ver en la figura.
-	{\begin{figure*}[h!]\centering\includegraphics[width=10cm]{./Figuras/Problema2_2}\end{figure*}}
+		\Problema{
 
-
-	donde
-	\begin{displaymath}
-		H(\omega)=\left \{ \begin{array}{ll}
-			0 & |\omega|<200\pi krad/s  \\
-			1 & |\omega|\geq200\pi krad/s
-		\end{array}
-		\right.
-	\end{displaymath}
-
-	\begin{enumerate}
-		\item Hallar la señal que se obtendría a la salida si el detector empleado fuese un detector de envolvente con $K_D=1$ y supresión de continua.
-		\item Determinar qué detector sería necesario para que la señal detectada coincidiese con la moduladora, especificando todos los parámetros necesarios.
-	\end{enumerate} 
-	}
-	{
-		\begin{enumerate}
-			\item $y(t)=2\cdot cos(2\pi \cdot 5 \cdot 10^3t)$
-			\item Detector síncrono con $f_{OL} = 2 \cdot cos(\omega_p \cdot t)$ y con filtro paso bajo con frecuencia de corte de al menos $20kHz$.
-		\end{enumerate}
-	}
-	{
-
-		The signal $x(t) = cos(2\pi\cdot 10\cdot 10^3 t)+4\cdot cos(2\pi\cdot 15 \cdot10^3 t)+cos(2\pi \cdot 20\cdot10^3 t)$ DSB modulates the carrier $p(t)=2\cdot cos(2\pi \cdot 10^5 t)$ and passes through a filter with frequency response $H(\omega)$ before reaching the detector, as it can be observed in the figure
+		La señal $x(t) = cos(2\pi\cdot 10\cdot 10^3 t)+4\cdot cos(2\pi\cdot 15 \cdot10^3 t)+cos(2\pi \cdot 20\cdot10^3 t)$ modula en DBL a la portadora $p(t)=2\cdot cos(2\pi \cdot 10^5 t)$ y a continuación pasa a través de un filtro con respuesta $H(\omega)$ antes de llegar al detector, tal y como se puede ver en la figura.
 		{\begin{figure*}[h!]\centering\includegraphics[width=10cm]{./Figuras/Problema2_2}\end{figure*}}
 	
 	
-		with
+		donde
 		\begin{displaymath}
 			H(\omega)=\left \{ \begin{array}{ll}
 				0 & |\omega|<200\pi krad/s  \\
@@ -91,18 +133,92 @@
 		\end{displaymath}
 	
 		\begin{enumerate}
-			\item Find the signal obtained at the output of the detector, when using an envelope detector of $K_D=1$ with DC suppression. 
-			\item b)	Determine the detector needed to obtain a detected signal equal to the modulating signal. Please specify all necessary parameters.
+			\item Hallar la señal que se obtendría a la salida si el detector empleado fuese un detector de envolvente con $K_D=1$ y supresión de continua.
+			\item Determinar qué detector sería necesario para que la señal detectada coincidiese con la moduladora, especificando todos los parámetros necesarios.
 		\end{enumerate} 
 		}
 		{
 			\begin{enumerate}
 				\item $y(t)=2\cdot cos(2\pi \cdot 5 \cdot 10^3t)$
-				\item Synchronous detector with $f_{LO} = 2 \cdot cos(\omega_c \cdot t)$ 	and a low pass filter with cut-off frequency of at least $20kHz$.
+				\item Detector síncrono con $f_{OL} = 2 \cdot cos(\omega_p \cdot t)$ y con filtro paso bajo con frecuencia de corte de al menos $20kHz$.
 			\end{enumerate}
 		}
+		{
 	
-\ProblemaBoletin{
+			The signal $x(t) = cos(2\pi\cdot 10\cdot 10^3 t)+4\cdot cos(2\pi\cdot 15 \cdot10^3 t)+cos(2\pi \cdot 20\cdot10^3 t)$ DSB modulates the carrier $p(t)=2\cdot cos(2\pi \cdot 10^5 t)$ and passes through a filter with frequency response $H(\omega)$ before reaching the detector, as it can be observed in the figure
+			{\begin{figure*}[h!]\centering\includegraphics[width=10cm]{./Figuras/Problema2_2}\end{figure*}}
+		
+		
+			with
+			\begin{displaymath}
+				H(\omega)=\left \{ \begin{array}{ll}
+					0 & |\omega|<200\pi krad/s  \\
+					1 & |\omega|\geq200\pi krad/s
+				\end{array}
+				\right.
+			\end{displaymath}
+		
+			\begin{enumerate}
+				\item Find the signal obtained at the output of the detector, when using an envelope detector of $K_D=1$ with DC suppression. 
+				\item b)	Determine the detector needed to obtain a detected signal equal to the modulating signal. Please specify all necessary parameters.
+			\end{enumerate} 
+			}
+			{
+				\begin{enumerate}
+					\item $y(t)=2\cdot cos(2\pi \cdot 5 \cdot 10^3t)$
+					\item Synchronous detector with $f_{LO} = 2 \cdot cos(\omega_c \cdot t)$ 	and a low pass filter with cut-off frequency of at least $20kHz$.
+				\end{enumerate}
+			}
+	
+
+
+
+			\Problema{
+
+			Si $x_{FM}(t)$ es la señal que resulta al modular en FM una portadora $p(t)=A_p \cdot cos(\omega_p t)$ por una señal $x(t)$. ¿Cuál sería la condición que permitiría recuperar la señal $x(t)$ mediante el circuito de la figura?
+			{\begin{figure*}[h!]\centering\includegraphics[width=8cm]{./Figuras/Problema2_5}\end{figure*}}
+		}
+		{
+		$\omega_p - \omega_\Delta \cdot |x(t)|_{max} > 0$
+		
+		}
+		{
+		
+			Considering that $x_{FM}(t)$ is the signal obtained when FM modulating a signal $x(t)$ with the carrier $p(t)=A_p \cdot cos(\omega_p t)$. Determine the condition needed to recover the signal $x(t)$ if the system outlined in the figure is used.
+			
+			{\begin{figure*}[h!]\centering\includegraphics[width=8cm]{./Figuras/Problem2_5}\end{figure*}}
+		}
+		{
+		$\omega_p - \omega_\Delta \cdot |x(t)|_{max} > 0$
+		
+		}
+		
+		\newpage
+		
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\seccion{Problemas adicionales}{Aditional problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\texto{
+	Estos problemas son algo más elaborados que los anteriores, en muchos casos extraídos de exámenes antiguos.
+
+}
+{
+	These problems are slightly more ellaborated than the previous ones, in many cases extracted from old exams.
+
+}
+
+
+
+		
+	
+\Problema{
 
 	Un transmisor tiene una potencia media nominal de $30 W$ y una potencia de pico máxima de $60 W$. Se pide calcular:
 	
@@ -185,7 +301,7 @@
 
 \newpage
 
-\ProblemaBoletin{
+\Problema{
 
 	La señal $x(t)$, cuya frecuencia es $10 kHz$, modula a una portadora de $100 kHz$ y se observa en un osciloscopio una señal como la de la figura
 	{\begin{figure*}[h!]\centering\includegraphics[width=12cm]{./Figuras/Problema2_4}\end{figure*}}
@@ -235,29 +351,8 @@
 
 \newpage
 
-\ProblemaBoletin{
 
-	Si $x_{FM}(t)$ es la señal que resulta al modular en FM una portadora $p(t)=A_p \cdot cos(\omega_p t)$ por una señal $x(t)$. ¿Cuál sería la condición que permitiría recuperar la señal $x(t)$ mediante el circuito de la figura?
-	{\begin{figure*}[h!]\centering\includegraphics[width=8cm]{./Figuras/Problema2_5}\end{figure*}}
-}
-{
-$\omega_p - \omega_\Delta \cdot |x(t)|_{max} > 0$
-
-}
-{
-
-	Considering that $x_{FM}(t)$ is the signal obtained when FM modulating a signal $x(t)$ with the carrier $p(t)=A_p \cdot cos(\omega_p t)$. Determine the condition needed to recover the signal $x(t)$ if the system outlined in the figure is used.
-	
-	{\begin{figure*}[h!]\centering\includegraphics[width=8cm]{./Figuras/Problem2_5}\end{figure*}}
-}
-{
-$\omega_p - \omega_\Delta \cdot |x(t)|_{max} > 0$
-
-}
-
-\newpage
-
-\ProblemaBoletin{
+\Problema{
 
 	El esquema de la figura representa un modulador de FM seguido de un convertidor de frecuencia y un filtro paso banda para adaptar la señal modulada a una banda de frecuencias conveniente para la transmisión. Para ajustar los parámetros del sistema se utiliza un tono de prueba $x(t)$. A partir de los valores recogidos en el apartado de datos, se pide calcular:
 	
@@ -314,7 +409,7 @@ $\omega_p - \omega_\Delta \cdot |x(t)|_{max} > 0$
 
 \newpage
 
-\ProblemaBoletin{
+\Problema{
 
 	La señal $x(t) = cos(\omega_1 t) + cos(\omega_2 t)$ modula en FM a la portadora $p(t) = A_p\cdot cos(\omega_p t)$. La señal modulada es pasada por un filtro paso alto con frecuencia de corte $2\pi\cdot 350 krad/s$, y la señal resultante se pasa por un detector síncrono en el que el oscilador local está ajustado a la frecuencia de la portadora considerada, estando su expresión dada por $p_{OL} (t)$ (ver Datos y Figura).  
 	
@@ -361,7 +456,7 @@ $y(t)=A_p \cdot \left [ 1 + \left ( \frac{\omega_d}{2 \omega_1} \right ) cos(\om
 
 \newpage
 
-\ProblemaBoletin{
+\Problema{
 
 Un tono $x(t)$, de frecuencia $1 kHz$ y $1 V$ de amplitud, modula a una portadora $p(t)$ de $1 MHz$, generándose una señal $y(t)$ como la que se muestra en la siguiente figura, cuya envolvente varía entre $1 V$ y $7 V$.
 
@@ -438,6 +533,13 @@ At this point, we want to modulate the carrier $c(t)$ in frequency (FM) using th
 \end{enumerate}
 }
 
+
+\begin{thebibliography}{100}
+	%\bibitem[Carlson2010]{Carlson} A. Bruce Carlson and Paul B. Crilly. Communication Systems: An Introduction to Signals and Noise in Electrical Communication, 5th Ed. McGraw-Hill, 2010.
+	\bibitem[Haykin2001]{Haykin}  Simon Haykin. Communication Systems, 4th Ed. John Wiley and Sons, 2001.
+	\end{thebibliography}
+	
+	
 
 \end{document}
 
