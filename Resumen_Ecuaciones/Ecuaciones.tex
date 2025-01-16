@@ -4,6 +4,16 @@
 \usepackage{amssymb}
 \usepackage{multirow}
 \usepackage{amsmath}
+\usepackage{vmargin}
+
+\setmargins{1.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
 
 \DeclareMathOperator{\sen}{sen}
 %
@@ -15,10 +25,6 @@
 \renewcommand{\arraystretch}{1}
 
 \begin{center}
-
-    {\bf RESUMEN DE ECUACIONES}
-    
-    \vspace{0.5cm}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % RELACIONES TRIGONOMÉTRICAS
@@ -47,6 +53,19 @@
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FDP NORMAL
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    \renewcommand{\arraystretch}{2}
+        \begin{tabular}{|c|c|}
+            \hline 
+            Función de densidad de probabilidad normal & $f(x) = \displaystyle\frac{1}{\sigma \sqrt{2 \pi}} e^{- \displaystyle\frac{(x - \mu)^2}{2 \sigma^2}}$ \\
+            \hline
+        \end{tabular}
+    \renewcommand{\arraystretch}{1}
+
     \vspace{0.5cm}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,29 +239,19 @@
         \renewcommand{\arraystretch}{1}
         \vspace{0.5cm}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % FDP NORMAL
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-    \renewcommand{\arraystretch}{2}
-        \begin{tabular}{|c|c|}
-            \hline 
-            Función de densidad de probabilidad normal & $f(x) = \displaystyle\frac{1}{\sigma \sqrt{2 \pi}} e^{- \displaystyle\frac{(x - \mu)^2}{2 \sigma^2}}$ \\
-            \hline
-        \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
 
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % FDP UNIFORME
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-    \renewcommand{\arraystretch}{2}
-        \begin{tabular}{|c|c|}
-            \hline 
-            Función de densidad de probabilidad uniforme (a,b) & $f(x) = \frac{1}{b-a} \qquad a < x < b$ \\
-            \hline
-        \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
+
+    %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % % FDP UNIFORME
+    % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    % \renewcommand{\arraystretch}{2}
+    %     \begin{tabular}{|c|c|}
+    %         \hline 
+    %         Función de densidad de probabilidad uniforme (a,b) & $f(x) = \frac{1}{b-a} \qquad a < x < b$ \\
+    %         \hline
+    %     \end{tabular}
+    % \renewcommand{\arraystretch}{1}
+    % \vspace{0.5cm}
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % PROBABILIDAD DE ERROR DE BIT

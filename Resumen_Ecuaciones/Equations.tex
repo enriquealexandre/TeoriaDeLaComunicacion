@@ -4,7 +4,16 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multirow}
+\usepackage{vmargin}
 
+\setmargins{1cm}       % margen izquierdo
+{1cm}                        % margen superior
+{20cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
 \DeclareMathOperator{\sen}{sin}
 %
 \DeclareMathOperator{\sinc}{sinc}
@@ -15,7 +24,7 @@
 
 \begin{center}
 
-    {\bf EQUATIONS SHEET}
+   % {\bf EQUATIONS SHEET}
     
     \vspace{0.5cm}
 
@@ -49,6 +58,31 @@
     \vspace{0.5cm}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FDP NORMAL
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    \renewcommand{\arraystretch}{2}
+        \begin{tabular}{|c|c|}
+            \hline 
+            Normal probability density function & $f(x) = \displaystyle\frac{1}{\sigma \sqrt{2 \pi}} e^{- \displaystyle\frac{(x - \mu)^2}{2 \sigma^2}}$ \\
+            \hline
+        \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+    
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % FDP UNIFORME
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    % \renewcommand{\arraystretch}{2}
+    %     \begin{tabular}{|c|c|}
+    %         \hline 
+    %         Uniform probability density function (a,b) & $f(x) = \frac{1}{b-a} \qquad a < x < b$ \\
+    %         \hline
+    %     \end{tabular}
+    % \renewcommand{\arraystretch}{1}
+    % \vspace{0.5cm}
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % TRANSFORMADA DE FOURIER
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \renewcommand{\arraystretch}{1.5}
@@ -75,7 +109,7 @@
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
+    \vspace{1.5cm}
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|c|c|}
         \multicolumn{2}{c}{{\bf Properties of the Fourier transform }} \\
@@ -98,10 +132,12 @@
         \hline
         $x(t) \cdot y(t))$ & $\displaystyle\frac{1}{2\pi} X(\omega) \ast Y(\omega)$ \\
         \hline
+      
     \end{tabular}
     \renewcommand{\arraystretch}{1}
     \vspace{0.5cm}
 
+ 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % ANALÓGICO
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -124,6 +160,27 @@
         $B_T$ & \multicolumn{2}{c|}{$2 \cdot W_x$} \\
         \hline
     \end{tabular}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % MODULACIONES ANGULARES
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{|c|c|}
+        \multicolumn{2}{c}{{\bf ANGLE MODULATIONS }} \\
+        \hline
+        & {\bf FM Modulation} \\
+        \hline
+        Signal & $x(t) = A_p \cdot \cos \left ( \omega_p t + \omega_d \int^t x(\lambda) d\lambda \right )$  \\
+        \hline
+        Max. phase deviation & $D = \frac{\omega_d |x(t)|_{max}}{W_x}$  \\
+        \hline
+        \multirow{2}{*}{Bandwidth}  & $B_T \approx 2 (D+a) W_x$  \\
+         & $a = \left \{ \begin{array}{lc} 2 & 2 \leq D \leq 10 \\ 1 & c.c. \end{array} \right. $ \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+    \vspace{0.5cm}
+
     \renewcommand{\arraystretch}{1}
     \vspace{0.5cm}
     \renewcommand{\arraystretch}{1.5}
@@ -144,27 +201,6 @@
         \multicolumn{2}{c}{{\bf Noise in AM (envelope detector)}} \\
         \hline
         $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{m^2 S_{xn}}{1 + m^2 S_{xn}} \gamma \quad \text{if} \quad \left ( \displaystyle\frac{S}{N} \right )_R \geq \left ( \displaystyle\frac{S}{N} \right )_{RTh}$ & $\text{No signal if } \left ( \displaystyle\frac{S}{N} \right )_R < \left ( \displaystyle\frac{S}{N} \right )_{RTh}$ \\[1ex]
-        \hline
-    \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
-
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % MODULACIONES ANGULARES
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{|c|c|}
-        \multicolumn{2}{c}{{\bf ANGLE MODULATIONS }} \\
-        \hline
-        & {\bf FM Modulation} \\
-        \hline
-        Signal & $x(t) = A_p \cdot \cos \left ( \omega_p t + \omega_d \int^t x(\lambda) d\lambda \right )$  \\
-        \hline
-        Max. phase deviation & $D = \frac{\omega_d |x(t)|_{max}}{W_x}$  \\
-        \hline
-        \multirow{2}{*}{Bandwidth}  & $B_T \approx 2 (D+a) W_x$  \\
-         & $a = \left \{ \begin{array}{lc} 2 & 2 \leq D \leq 10 \\ 1 & c.c. \end{array} \right. $ \\
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
@@ -219,31 +255,7 @@
         \renewcommand{\arraystretch}{1}
         \vspace{0.5cm}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % FDP NORMAL
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-    \renewcommand{\arraystretch}{2}
-        \begin{tabular}{|c|c|}
-            \hline 
-            Normal probability density function & $f(x) = \displaystyle\frac{1}{\sigma \sqrt{2 \pi}} e^{- \displaystyle\frac{(x - \mu)^2}{2 \sigma^2}}$ \\
-            \hline
-        \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
-    
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % FDP UNIFORME
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-    \renewcommand{\arraystretch}{2}
-        \begin{tabular}{|c|c|}
-            \hline 
-            Uniform probability density function (a,b) & $f(x) = \frac{1}{b-a} \qquad a < x < b$ \\
-            \hline
-        \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
-
-    
+       
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % PROBABILIDAD DE ERROR DE BIT
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
