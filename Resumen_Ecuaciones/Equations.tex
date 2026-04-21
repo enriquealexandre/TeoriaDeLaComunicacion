@@ -19,12 +19,32 @@
 \DeclareMathOperator{\sinc}{sinc}
 \begin{document}
 
+% \begin{center}
+% \setlength{\fboxsep}{8pt}
+% \setlength{\fboxrule}{1pt}
+% \fbox{
+%     \begin{minipage}{0.95\textwidth}
+%         \begin{center}
+%         {\bf INSTRUCTIONS}
+%         \end{center}
+%         \begin{itemize}
+%         \item The final grade for PEI-1 will be the maximum between the grade obtained in Problem 1 and the grade obtained in PEI-1.
+%         \item The grade for the resit of PEI-2 will be calculated from parts a, b, and d of problems 2 and 3.
+%         \item The final grade for PEI-2 will be the maximum between the grade obtained in the resit and the grade obtained in PEI-2.
+%         \item The final grade for the course will be calculated as:
+%         \begin{displaymath}
+%             \text{Grade} = 0.3 \cdot \max(\text{PEI-1}, \text{Problem1}) + 0.3 \cdot \max (\text{PEI-2}, \text{ResitPEI-2}) + 0.2 \cdot \text{Problem2} + 0.2 \cdot \text{Problem3}
+%         \end{displaymath}
+%         \end{itemize}
+%     \end{minipage}
+% }
+% \end{center}
 
 \renewcommand{\arraystretch}{1}
 
 \begin{center}
 
-   % {\bf EQUATIONS SHEET}
+   {\bf GENERAL EQUATIONS}
     
     \vspace{0.5cm}
 
@@ -109,7 +129,7 @@
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
-    \vspace{1.5cm}
+    \vspace{0.5cm}
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|c|c|}
         \multicolumn{2}{c}{{\bf Properties of the Fourier transform }} \\
@@ -135,9 +155,11 @@
       
     \end{tabular}
     \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
+    \vspace{1.5cm}
 
+    \newpage
  
+    {\bf ANALOG COMMUNICATIONS}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % ANALÓGICO
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -146,116 +168,92 @@
     % MODULACIONES LINEALES
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \renewcommand{\arraystretch}{2}
-    \begin{tabular}{|c|c|c|}
-        \multicolumn{3}{c}{{\bf LINEAR MODULATIONS }} \\
+    \begin{tabular}{|c|c|c|c|}
+        \multicolumn{4}{c}{{\bf Linear modulations }} \\
         \hline
-        & {\bf AM } & {\bf DSB} \\
+        & {\bf AM modulation } & {\bf DSB modulation } & {\bf FM modulation } \\
         \hline
-        $x_c(t)$ & $A_c \cdot [1 + m x_n(t)] \cdot \cos(\omega_c t)$ & $A_c \cdot x(t) \cdot \cos(\omega_c t)$ \\
+        Signal & $A_c \cdot [1 + m x_n(t)] \cdot \cos(\omega_c t)$ & $A_c \cdot x(t) \cdot \cos(\omega_c t)$ & $A_c \cdot \cos \left ( \omega_c t + \omega_d \int^t x(\lambda) d\lambda \right )$\\
         \hline
-        $P_m$ & $\displaystyle\frac{A_c^2}{2} + \displaystyle\frac{m^2 A_c^2}{2} S_{xn} = P_c + 2P_{BL}$ & $\displaystyle\frac{A_c^2}{2}S_x = 2 P_{BL}$ \\
+        Average power & $\displaystyle\frac{A_c^2}{2} + \displaystyle\frac{m^2 A_c^2}{2} S_{xn} = P_c + 2P_{BL}$ & $\displaystyle\frac{A_c^2}{2}S_x = 2 P_{BL}$ & $\frac{A_c^2}{2}$ \\
         \hline
-        $PEP$ & $\displaystyle\frac{1}{2} A_c^2 (1+m)^2$ & $\displaystyle\frac{1}{2} [A_c \cdot |x(t)|_{max}]^2$ \\
+        Crest power & $\displaystyle\frac{1}{2} A_c^2 (1+m)^2$ & $\displaystyle\frac{1}{2} [A_c \cdot |x(t)|_{max}]^2$ & $\frac{A_c^2}{2}$\\
         \hline
-        $B_T$ & \multicolumn{2}{c|}{$2 \cdot W_x$} \\
+        \multirow{3}{*}{Bandwidth} & \multicolumn{2}{c|}{$B_T = 2 \cdot W_x$} & $B_T \approx 2 (D+a) W_x$\\
+        & \multicolumn{2}{c|}{} & $a = \left \{ \begin{array}{lc} 2 & 2 \leq D \leq 10 \\ 1 & c.c. \end{array} \right. $ \\
+        & \multicolumn{2}{c|}{} & $D = \frac{\omega_d |x(t)|_{max}}{W_x}$ \\
         \hline
     \end{tabular}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % MODULACIONES ANGULARES
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{|c|c|}
-        \multicolumn{2}{c}{{\bf ANGLE MODULATIONS }} \\
-        \hline
-        & {\bf FM Modulation} \\
-        \hline
-        Signal & $x(t) = A_p \cdot \cos \left ( \omega_p t + \omega_d \int^t x(\lambda) d\lambda \right )$  \\
-        \hline
-        Max. phase deviation & $D = \frac{\omega_d |x(t)|_{max}}{W_x}$  \\
-        \hline
-        \multirow{2}{*}{Bandwidth}  & $B_T \approx 2 (D+a) W_x$  \\
-         & $a = \left \{ \begin{array}{lc} 2 & 2 \leq D \leq 10 \\ 1 & c.c. \end{array} \right. $ \\
-        \hline
-    \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
+  
+
 
     \renewcommand{\arraystretch}{1}
     \vspace{0.5cm}
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{|c|c|c|c|}
-        \multicolumn{4}{c}{{\bf NOISE IN LINEAR MODULATIONS}} \\
-        \hline
-        \multicolumn{2}{|c|}{{\bf Noise in linear modulations}} & \multicolumn{2}{c|}{{\bf Noise after demodulation (Synchronous det.)}} \\
-        \hline
-        Baseband signal & & AM Modulation & DSB Modulation \\
-        \hline
-        $\gamma = \displaystyle\frac{P_R}{N_0 W_x}$ & $\left ( \displaystyle\frac{S}{N} \right )_R = \displaystyle\frac{W_x}{B_T} \cdot \gamma $ & $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{m^2 S_{xn}}{1 + m^2 S_{xn}} \cdot \gamma $ & $\left ( \displaystyle\frac{S}{N} \right )_D = \gamma $ \\[1ex]
-        \hline
-    \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
-    \renewcommand{\arraystretch}{2}
     \begin{tabular}{|c|c|}
-        \multicolumn{2}{c}{{\bf Noise in AM (envelope detector)}} \\
+        \multicolumn{2}{c}{{\bf Noise in analog modulations }} \\
         \hline
-        $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{m^2 S_{xn}}{1 + m^2 S_{xn}} \gamma \quad \text{if} \quad \left ( \displaystyle\frac{S}{N} \right )_R \geq \left ( \displaystyle\frac{S}{N} \right )_{RTh}$ & $\text{No signal if } \left ( \displaystyle\frac{S}{N} \right )_R < \left ( \displaystyle\frac{S}{N} \right )_{RTh}$ \\[1ex]
+        SNR in baseband & $\gamma = \displaystyle\frac{S_x}{N_0 W_x}$ \\
         \hline
-    \end{tabular}
+        SNR in pre-detection &  $\left ( \displaystyle\frac{S}{N} \right )_R = \displaystyle\frac{W_x}{B_T} \cdot \gamma $\\
+        \hline
+        AM modulation & $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{m^2 S_{xn}}{1 + m^2 S_{xn}} \cdot \gamma $ \\
+        \hline 
+        DSB modulation & $\left ( \displaystyle\frac{S}{N} \right )_D = \gamma $ \\
+        \hline
+        FM modulation & $\left ( \displaystyle\frac{S}{N} \right )_D = 3D^2 S_{xn}\gamma$ \\    
+        \hline
+        FM modulation with pre-emphasis ($B_{de} \ll W_x$) & $\left ( \displaystyle\frac{S}{N} \right )_D = \displaystyle\frac{\omega_d^2}{B_{de}^2} S_x \gamma$ \\
+        \hline
+    \end{tabular}      
     \renewcommand{\arraystretch}{1}
     \vspace{0.5cm}
 
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{|c|c|c|}
-        \multicolumn{3}{c}{{\bf Noise in angle modulations }} \\
-        \hline
-        & {\bf FM} & {\bf Deemphasis FM} ($B_{de} \ll W_x$)\\
-        \hline
-        $\left ( \frac{S}{N} \right )_D$ & $3D^2 S_{xn}\gamma$ & $\left ( \frac{\omega_d}{B_{de}} \right )^2 S_x \gamma$  \\
-        \hline
-    \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % TEORÍA DE LA DETECCIÓN - COTAS
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-    \renewcommand{\arraystretch}{1}
-    \begin{tabular}{|c|c|c|}
-        \hline
-        {\bf One-dimensional} & {\bf Union bound} & {\bf Simplified}\\
-        {\bf M-ary system} &                        & {\bf union bound} \\
-        \hline
-        \rule{0pt}{25pt} $P_e = \displaystyle\frac{2(M-1)}{M} Q \left ( \displaystyle\frac{d}{\sqrt{2 N_0}} \right ) $ & $P_e \leq \displaystyle\frac{1}{M} \displaystyle\sum\limits_{i=1}^{M} \displaystyle\sum\limits_{\substack{k=1 \\ k\neq i}}^{M} Q \left ( \displaystyle\frac{d_{ik}}{\sqrt{2 N_0}} \right )$ & $P_e \leq (M-1) \cdot Q \left ( \displaystyle\frac{d_{min}}{\sqrt{2 N_0}} \right )$\\
-        \hline
-    \end{tabular}
-    \renewcommand{\arraystretch}{1}
-    \vspace{0.5cm}
-    
+    \newpage
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % MODULACIONES PASO BANDA
+    {\bf DIGITAL COMMUNICATIONS}
+
+
+
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % MODULACIONES DIGITALES
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
     \renewcommand{\arraystretch}{2.2}
         \begin{tabular}{|c|c|c|}
-            \multicolumn{3}{c}{{\bf Pass-band modulations}}\\
+            \multicolumn{3}{c}{{\bf Digital modulations}}\\
             \hline
-            \multirow{2}{*}{PSK} & $M=2$ & $P_e = Q\left ( \sqrt{\displaystyle\frac{2 E_b}{N_0}} \right)$ \\
+            \multicolumn{2}{|c|}{One-dimensional M-ary system} & $P_e = \displaystyle\frac{2(M-1)}{M} Q \left ( \displaystyle\frac{d}{\sqrt{2 N_0}} \right ) $\\[1ex]
+            \hline
+            \multicolumn{2}{|c|}{Union bound} & $P_e \leq \displaystyle\frac{1}{M} \displaystyle\sum\limits_{i=1}^{M} \displaystyle\sum\limits_{\substack{k=1 \\ k\neq i}}^{M} Q \left ( \displaystyle\frac{d_{ik}}{\sqrt{2 N_0}} \right )$ \\ [1ex]
+            \hline
+            \multicolumn{2}{|c|}{Simplified union bound} & $P_e \leq (M-1) \cdot Q \left ( \displaystyle\frac{d_{min}}{\sqrt{2 N_0}} \right )$ \\[1ex]
+            \hline
+            \multirow{2}{*}{PSK} & $M=2$ & $P_e = Q\left ( \displaystyle\sqrt{\displaystyle\frac{2 E_b}{N_0}} \right)$ \\[1ex]
             \cline{2-3}
-            & $M \geq 4$ & $P_e = 2 \cdot Q\left ( \sqrt{\displaystyle\frac{2 E_s}{N_0}} \sin\left ( \displaystyle\frac{\pi}{M} \right)  \right)$ \\
+            & $M \geq 4$ & $P_e = 2 \cdot Q\left ( \sqrt{\displaystyle\frac{2 E_s}{N_0}} \sen\left ( \displaystyle\frac{\pi}{M} \right)  \right)$ \\
             \hline
-            \multirow{2}{*}{FSK} & $M=2$ & $P_e = Q\left ( \sqrt{\displaystyle\frac{E_b}{N_0}} \right)$ \\
+            DPSK & $M=2$ & $P_e = \displaystyle\frac{1}{2} e^{-\displaystyle\frac{E_b}{N_0}}$ \\
+            \hline
+            \multirow{2}{*}{Coherent FSK} & $M=2$ & $P_e = Q\left ( \sqrt{\displaystyle\frac{E_b}{N_0}} \right)$ \\
             \cline{2-3}
             & $M\geq 4$ & $P_e = (M-1) \cdot Q\left ( \sqrt{\displaystyle\frac{E_s}{N_0}} \right)$ \\
             \hline
+            Non-coherent FSK & $M=2$ & $P_e = \displaystyle\frac{1}{2} e^{-\displaystyle\frac{E_b}{2 N_0}}$ \\
+            \hline
             QAM & $log_2(M)$ par & $P_e = 4 \left ( 1 - \displaystyle\frac{1}{\sqrt{M}} \right ) \cdot Q\left ( \sqrt{\displaystyle\frac{3 \cdot E_s}{(M-1) \cdot N_0}} \right)$ \\
+            \hline
+            MSK & M=2 & $P_e = Q\left ( \displaystyle\sqrt{\displaystyle\frac{2 E_b}{N_0}} \right)$ \\
             \hline
         \end{tabular}
         \renewcommand{\arraystretch}{1}
         \vspace{0.5cm}
 
-       
+
+
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % PROBABILIDAD DE ERROR DE BIT
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -286,16 +284,35 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % PAM BANDA BASE
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % \renewcommand{\arraystretch}{2}
+    %     \begin{tabular}{|c|c|c|}
+    %         \multicolumn{3}{c}{{\bf PAM power spectral density (baseband)}}\\
+    %         \hline
+    %         $x(t) = \displaystyle\sum\limits_{n=-\infty}^{\infty} a_n h(t-nT)$ &
+    %         $S_x(\omega) = \displaystyle\frac{1}{T} |H(\omega)|^2 S_a(\omega)$ &
+    %         $S_a(\omega) = \displaystyle\sum\limits_{m=-\infty}^{\infty} R_a[m] \cdot e^{-j\omega m T}$\\
+    %         \hline
+    %         $\sum\limits_{m=-\infty}^\infty e^{-j\omega mT} = \frac{2\pi}{T} \sum\limits_{m=-\infty}^\infty \delta (\omega- m\frac{2\pi}{T} )$&&\\
+    %         \hline
+    
+    %     \end{tabular}
+       
+
+    %     \renewcommand{\arraystretch}{1}
+    %     \vspace{0.5cm}
     \renewcommand{\arraystretch}{2}
-        \begin{tabular}{|c|c|c|}
-            \multicolumn{3}{c}{{\bf PAM power spectral density (baseband)}}\\
+        \begin{tabular}{|c|c|}
+            \multicolumn{2}{c}{{\bf Densidad espectral de potencia de la PAM (banda base)}}\\
             \hline
             $x(t) = \displaystyle\sum\limits_{n=-\infty}^{\infty} a_n h(t-nT)$ &
-            $S_x(\omega) = \displaystyle\frac{1}{T} |H(\omega)|^2 S_a(\omega)$ &
-            $S_a(\omega) = \displaystyle\sum\limits_{m=-\infty}^{\infty} R_a[m] \cdot e^{-j\omega m T}$\\
+            $S_x(\omega) = \displaystyle\frac{1}{T} |H(\omega)|^2 S_a(\omega)$\\
             \hline
+            $S_a(\omega) = \displaystyle\sum\limits_{m=-\infty}^{\infty} R_a[m] \cdot e^{-j\omega m T}$ &
+            $\sum\limits_{m=-\infty}^\infty e^{-j\omega mT} = \frac{2\pi}{T} \sum\limits_{m=-\infty}^\infty \delta (\omega- m\frac{2\pi}{T} )$\\
+            \hline
+
         \end{tabular}
-        \renewcommand{\arraystretch}{1}
+    \renewcommand{\arraystretch}{1}
         \vspace{0.5cm}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,7 +328,9 @@
             \hline
             M-PSK and M-QAM & $\displaystyle\frac{2 R_b}{log_2(M)} = \displaystyle\frac{2}{T}$ & $\displaystyle\frac{R_b}{log_2(M)} = \displaystyle\frac{1}{T}$ \\[1ex]
             \hline
-            M-FSK & $\displaystyle\frac{(M+3) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+3)}{2\cdot T}$ & $\displaystyle\frac{(M+1) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+1)}{2\cdot T}$ \\[1ex]
+            coherent M-FSK & $\displaystyle\frac{(M+3) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+3)}{2\cdot T}$ & $\displaystyle\frac{(M+1) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+1)}{2\cdot T}$ \\[1ex]
+            \hline
+            non-coherent M-FSK & $\displaystyle\frac{(M+1) R_b}{log_2(M)} = \displaystyle\frac{(M+1)}{T}$ & $\displaystyle\frac{M \cdot R_b}{log_2(M)} = \displaystyle\frac{M}{T}$ \\[1ex]
             \hline
             & $^* \Rightarrow h(t) = \left \{ \begin{array}{lc} \displaystyle\frac{1}{\sqrt{T}} & 0\leq t < T \\ 0 & \text{c.c.} \end{array}\right. $ & $^{**} \Rightarrow h(t) = \displaystyle\frac{\sen\left ( \displaystyle\frac{\pi}{T} t \right ) }{\displaystyle\frac{\pi}{T}t}$ \\
             \hline
