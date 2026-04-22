@@ -172,30 +172,115 @@ $\Delta \left ( \frac{E_s}{N_0} \right ) = 3.68 dB$
 \cite{Sklar} Si el criterio de rendimiento de un sistema es la probabilidad de error de bit, ¿Cuál de los dos esquemas de modulación siguientes será el elegido para operar en un canal AWGN? Muestre los cálculos.
 
 \begin{enumerate}
-	\item FSK binaria ortogonal coherente con $E_b/N_0 = 13 dB$.
+	\item FSK binaria ortogonal no coherente con $E_b/N_0 = 13 dB$.
 	\item PSK binaria coherente con $E_b/N_0 = 8 dB$.
 \end{enumerate}
 
 }
 {
 
-FSK binaria ortogonal coherente
+FSK binaria ortogonal no coherente
 }
 {
 
 	\cite{Sklar} If the performance criterion of a system is the bit error probability, which one of the following modulation schemes would be chosen to operate in an AWGN channel? Show the calculations.
 
 \begin{enumerate}
-	\item Coherent binary orthogonal FSK with $E_b/N_0 = 13 dB$.
+	\item Non-coherent binary orthogonal FSK with $E_b/N_0 = 13 dB$.
 	\item Coherent binary PSK with $E_b/N_0 = 8 dB$.
 \end{enumerate}
 
 }
 {
 
-Coherent binary orthogonal FSK
+Non-coherent binary orthogonal FSK
 }
 
+
+
+\Problema{
+
+\cite{Haykin} 	Un sistema transmite datos binarios a la velocidad de $2,5 \cdot 10^6$ bps. En transcurso de la transmisión se añade a la señal un ruido blanco gaussiano de media nula y densidad espectral de potencia $N_0/2=10^(-20)$ W/Hz. En ausencia de ruido, la amplitud de la señal sinusoidal recibida para el dígito 1 ó 0 es $1 \mu V$. Determine la probabilidad media de error de símbolo para las configuraciones del sistema siguientes:
+
+\begin{enumerate}
+	\item FSK binaria coherente.
+	\item MSK coherente.
+	\item FSK binaria no coherente
+\end{enumerate}
+
+}
+{
+
+\begin{enumerate}
+	\item $9,67 \cdot 10^{-4}$
+	\item $5,41 \cdot 10^{-6}$
+	\item $3,36 \cdot 10^{-3}$
+\end{enumerate}
+}
+{
+
+\cite{Haykin} A system transmits binary data at a rate of $2.5 \cdot 10^6$ bps. During transmission, zero-mean additive white Gaussian noise with power spectral density $N_0/2 = 10^{-20}$ W/Hz is added to the signal. In the absence of noise, the amplitude of the received sinusoidal signal for digit 1 or 0 is $1\,\mu V$. Determine the average symbol error probability for the following system configurations:
+
+\begin{enumerate}
+	\item Coherent binary FSK.
+	\item Coherent MSK.
+	\item Non-coherent binary FSK.
+\end{enumerate}
+
+}
+{
+
+\begin{enumerate}
+	\item $9,67 \cdot 10^{-4}$
+	\item $5,41 \cdot 10^{-6}$
+	\item $3,36 \cdot 10^{-3}$
+\end{enumerate}
+}
+
+\Problema{
+		(Examen mayo de 2016) Un sistema de comunicaciones digitales emplea un esquema de modulación FSK para transmitir dos señales ortogonales y equiprobables $s_1(t)$ y $s_2(t)$ a la velocidad de $2,5\cdot 10^6$ bps. El sistema está caracterizado por $E_b/N_0 = 12$ dB.
+
+$s_i (t) = \begin{cases} \sqrt{\frac{2E_b}{T_b}} \cos(\omega_i t), & 0 \leq t < T_b \\ 0, & \text{c.c.} \end{cases}, \quad i = 1,2.$
+
+\begin{enumerate}
+	\item Calcule la probabilidad media de error para los esquemas de modulación FSK con receptor coherente y receptor no coherente.
+	\item ¿Cuál de los esquemas anteriores es más adecuado para un canal modelado con ruido AWGN? Justifique su respuesta. Para el resto del ejercicio tenga en cuenta solo el esquema seleccionado en este apartado.
+	\item Calcule el ancho de banda mínimo del esquema seleccionado en el apartado b).
+	\item Para dicho esquema, determine una base ortonormal que permita representar $s_1(t)$ y $s_2(t)$. Represente la constelación en el espacio de señal indicando las coordenadas de los vectores señal.
+	\item Si compara la modulación anterior con una BPSK coherente con la misma $P_e$, ¿Cuál de los dos exigirá mayor relación $E_b/N_0$? Calcule el incremento de $E_b/N_0$ expresado en dB.
+\end{enumerate}	
+}
+{
+\begin{enumerate}
+	\item $P_e^{coh} = 3,43 \cdot 10^{-5}$, $P_e^{no-coh} = 1.81 \cdot 10^{-4}$
+	\item FSK con receptor coherente
+	\item $B_{min} = 6,25$ MHz
+	\item Base: $s_1(t)$ y $s_2(t)$ normalizadas. 
+	\item La FSK. Incremento de $E_b/N_0$ de $3$ dB.
+\end{enumerate}
+}	
+{
+(May 2016 exam) A digital communications system uses an FSK modulation scheme to transmit two orthogonal and equiprobable signals, $s_1(t)$ and $s_2(t)$, at a rate of $2.5\cdot 10^6$ bps. The system is characterized by $E_b/N_0 = 12$ dB.
+
+$s_i (t) = \begin{cases} \sqrt{\frac{2E_b}{T_b}} \cos(\omega_i t), & 0 \leq t < T_b \\ 0, & \text{otherwise} \end{cases}, \quad i = 1,2.$
+
+\begin{enumerate}
+	\item Calculate the average error probability for FSK modulation schemes with coherent and non-coherent receivers.
+	\item Which of the previous schemes is more suitable for a channel modeled with AWGN noise? Justify your answer. For the rest of the exercise, consider only the scheme selected in this section.
+	\item Calculate the minimum bandwidth of the scheme selected in part b).
+	\item For that scheme, determine an orthonormal basis that allows representing $s_1(t)$ and $s_2(t)$. Plot the constellation in signal space indicating the coordinates of the signal vectors.
+	\item If you compare the previous modulation with a coherent BPSK with the same $P_e$, which one will require a higher $E_b/N_0$ ratio? Compute the increase in $E_b/N_0$ expressed in dB.
+\end{enumerate}	
+}
+{
+\begin{enumerate}
+	\item $P_e^{coh} = 3.43 \cdot 10^{-5}$, $P_e^{no-coh} = 1.81 \cdot 10^{-4}$
+	\item FSK with coherent receiver
+	\item $B_{min} = 6.25$ MHz
+	\item Basis: normalized $s_1(t)$ and $s_2(t)$. 
+	\item FSK. $E_b/N_0$ increase of $3$ dB.
+\end{enumerate}
+}
 
 
 \begin{thebibliography}{100}
