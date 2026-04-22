@@ -308,9 +308,7 @@
         \begin{tabular}{|c|c|c|}
             \multicolumn{3}{c}{{\bf Ancho de banda ($Hz$) de las modulaciones paso banda }} \\
             \hline
-            \multirow{2}{*}{Modulación} & Valores nominales$^*$ & Valores óptimos$^{**}$ \\
-            \cline{2-3}
-            & $B$ & $B$ \\
+             & $ h(t) = \left \{ \begin{array}{lc} \displaystyle\frac{1}{\sqrt{T}} & 0\leq t < T \\ 0 & \text{c.c.} \end{array}\right. $ & $ h(t) = \displaystyle\frac{\sen\left ( \displaystyle\frac{\pi}{T} t \right ) }{\displaystyle\frac{\pi}{T}t}$ \\
             \hline
             M-PSK y M-QAM & $\displaystyle\frac{2 R_b}{log_2(M)} = \displaystyle\frac{2}{T}$ & $\displaystyle\frac{R_b}{log_2(M)} = \displaystyle\frac{1}{T}$ \\[1ex]
             \hline
@@ -318,8 +316,7 @@
             \hline
             M-FSK (no coherente) & $\displaystyle\frac{(M+1) R_b}{log_2(M)} = \displaystyle\frac{(M+1)}{T}$ & $\displaystyle\frac{M \cdot R_b}{log_2(M)} = \displaystyle\frac{M}{T}$ \\[1ex]
             \hline
-            & $^* \Rightarrow h(t) = \left \{ \begin{array}{lc} \displaystyle\frac{1}{\sqrt{T}} & 0\leq t < T \\ 0 & \text{c.c.} \end{array}\right. $ & $^{**} \Rightarrow h(t) = \displaystyle\frac{\sen\left ( \displaystyle\frac{\pi}{T} t \right ) }{\displaystyle\frac{\pi}{T}t}$ \\
-            \hline
+            
         \end{tabular}
         \renewcommand{\arraystretch}{1}
         \vspace{0.5cm}

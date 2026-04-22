@@ -302,7 +302,7 @@
     %     \vspace{0.5cm}
     \renewcommand{\arraystretch}{2}
         \begin{tabular}{|c|c|}
-            \multicolumn{2}{c}{{\bf Densidad espectral de potencia de la PAM (banda base)}}\\
+            \multicolumn{2}{c}{{\bf Power Spectral Density for a PAM signal (baseband)}}\\
             \hline
             $x(t) = \displaystyle\sum\limits_{n=-\infty}^{\infty} a_n h(t-nT)$ &
             $S_x(\omega) = \displaystyle\frac{1}{T} |H(\omega)|^2 S_a(\omega)$\\
@@ -322,21 +322,21 @@
         \begin{tabular}{|c|c|c|}
             \multicolumn{3}{c}{{\bf Bandwidth ($Hz$) for pass-band modulations}} \\
             \hline
-            \multirow{2}{*}{Modulation} & Nominal values$^*$ & Optimal values$^{**}$ \\
-            \cline{2-3}
-            & $B$ & $B$ \\
+             & $ h(t) = \left \{ \begin{array}{lc} \displaystyle\frac{1}{\sqrt{T}} & 0\leq t < T \\ 0 & \text{otherwise} \end{array}\right. $ & $ h(t) = \displaystyle\frac{\sen\left ( \displaystyle\frac{\pi}{T} t \right ) }{\displaystyle\frac{\pi}{T}t}$ \\
             \hline
             M-PSK and M-QAM & $\displaystyle\frac{2 R_b}{log_2(M)} = \displaystyle\frac{2}{T}$ & $\displaystyle\frac{R_b}{log_2(M)} = \displaystyle\frac{1}{T}$ \\[1ex]
             \hline
-            coherent M-FSK & $\displaystyle\frac{(M+3) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+3)}{2\cdot T}$ & $\displaystyle\frac{(M+1) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+1)}{2\cdot T}$ \\[1ex]
+            M-FSK (coherent) & $\displaystyle\frac{(M+3) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+3)}{2\cdot T}$ & $\displaystyle\frac{(M+1) R_b}{2 \cdot log_2(M)} = \displaystyle\frac{(M+1)}{2\cdot T}$ \\[1ex]
             \hline
-            non-coherent M-FSK & $\displaystyle\frac{(M+1) R_b}{log_2(M)} = \displaystyle\frac{(M+1)}{T}$ & $\displaystyle\frac{M \cdot R_b}{log_2(M)} = \displaystyle\frac{M}{T}$ \\[1ex]
+            M-FSK (non-coherent) & $\displaystyle\frac{(M+1) R_b}{log_2(M)} = \displaystyle\frac{(M+1)}{T}$ & $\displaystyle\frac{M \cdot R_b}{log_2(M)} = \displaystyle\frac{M}{T}$ \\[1ex]
             \hline
-            & $^* \Rightarrow h(t) = \left \{ \begin{array}{lc} \displaystyle\frac{1}{\sqrt{T}} & 0\leq t < T \\ 0 & \text{c.c.} \end{array}\right. $ & $^{**} \Rightarrow h(t) = \displaystyle\frac{\sen\left ( \displaystyle\frac{\pi}{T} t \right ) }{\displaystyle\frac{\pi}{T}t}$ \\
-            \hline
+            
         \end{tabular}
         \renewcommand{\arraystretch}{1}
         \vspace{0.5cm}
+
+
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % TABLA DE Q(X)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
