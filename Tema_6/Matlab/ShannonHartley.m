@@ -21,11 +21,11 @@ Eb_PSK = [10.*log10(0.5*qfuncinv(Pb)^2) 10.*log10((qfuncinv(k.*Pb/2).^2)./(2.*k.
 k = [1:5];
 scatter(Eb_PSK, k, 'LineWidth',2)
 
-%Modulación M-FSK (M=4,8,16,32,64) 
+%Modulación M-FSK coherente (M=4,8,16,32,64) 
 k = [3:6];
 M = 2.^k;
 Eb_FSK = 10.*log10(((qfuncinv((((2.^k)-1)*(Pb))./((2.^(k-1)).*(M-1)))).^2)./(k));
-scatter(Eb_FSK,2.*k./(M+1),'s', 'LineWidth',2);
+scatter(Eb_FSK,2.*k./(M),'s', 'LineWidth',2);
 
 %Modulación M-QAM (M=16,32,64)
 k = [4:6];
@@ -33,9 +33,17 @@ M = 2.^k;
 Eb_QAM = 10*log10(((M-1)./(3.*k)).*(qfuncinv((k.*Pb)./(4*(1-(1./sqrt(M)))))).^2);
 scatter(Eb_QAM, k, 'd', 'LineWidth',2);
 
+%Modulación MSK 
+%k = 1;
+%M = 2.^k;
+%Eb_MSK = 10.*log10(0.5*qfuncinv(Pb)^2);
+%scatter(Eb_MSK,4.*k./(M),'s', 'LineWidth',2);
+
+
+
 
 yline(1)
 xlabel('E_b/N_0')
 ylabel('R/W');
-legend('Límite Shannon-Hartley','M-PSK','M-FSK','M-QAM');
+legend('Límite Shannon-Hartley','M-PSK','M-FSK','M-QAM','MSK');
 grid
